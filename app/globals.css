@@ -14,8 +14,17 @@ button { font: inherit; }
 .edition { text-transform: uppercase; }
 .about-link { justify-self: end; text-decoration: none; border-bottom: 1px solid currentColor; }
 
+.filters { position: sticky; z-index: 8; top: 0; min-height: 68px; padding: 0 24px; display: flex; align-items: center; gap: clamp(24px, 4vw, 70px); overflow-x: auto; background: rgba(8,8,8,.92); border-bottom: 1px solid var(--line); backdrop-filter: blur(14px); scrollbar-width: none; }
+.filters::-webkit-scrollbar { display: none; }
+.filters button { position: relative; flex: 0 0 auto; padding: 22px 0 19px; border: 0; background: transparent; color: rgba(255,255,255,.5); font-size: 13px; line-height: 1; text-transform: uppercase; cursor: pointer; transition: color .25s ease; }
+.filters button::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: #d9ff43; transform: scaleX(0); transform-origin: left; transition: transform .3s ease; }
+.filters button:hover, .filters button.active { color: white; }
+.filters button.active::after { transform: scaleX(1); }
+.filters sup { margin-left: 3px; color: #d9ff43; font-size: 8px; }
+
 .project-grid { padding: 5px; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 5px; }
-.project-card { position: relative; display: block; aspect-ratio: 16 / 9; padding: 0; border: 0; overflow: hidden; background: #111; cursor: none; text-align: left; }
+.project-card { position: relative; display: block; aspect-ratio: 16 / 9; padding: 0; border: 0; overflow: hidden; background: #111; cursor: none; text-align: left; animation: cardIn .4s ease both; }
+@keyframes cardIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .project-card img { width: 100%; height: 100%; object-fit: contain; display: block; transition: opacity .35s ease; }
 .project-card .shade { position: absolute; inset: 0; background: rgba(0,0,0,.28); opacity: 0; transition: opacity .35s ease; }
 .project-card:hover img, .project-card:focus-visible img { opacity: .88; }
@@ -55,6 +64,8 @@ footer a { text-decoration: none; border-bottom: 1px solid; }
   .role { align-items: flex-end; text-align: right; }
   .edition { align-self: end; }
   .about-link { align-self: end; }
+  .filters { min-height: 56px; padding: 0 16px; gap: 25px; }
+  .filters button { padding: 18px 0 16px; font-size: 11px; }
   .project-grid { grid-template-columns: 1fr; }
   .project-card, .hero, .secondary, .medium, .small, .wide { grid-column: auto; grid-row: auto; min-height: 0; }
   .project-meta, .project-arrow { opacity: 1; transform: none; }
