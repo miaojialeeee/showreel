@@ -164,7 +164,7 @@ export default function Home() {
                   <span>02 / Brand Film</span>
                   <p>从细密针脚到蒸汽熨烫，以工坊纪录片式的镜头语言呈现衣物护理中的时间价值与手工温度。</p>
                 </div>
-                <video controls playsInline preload="metadata" poster="/projects/garment-workshop/key-visual.jpg">
+                <video controls playsInline preload="none" poster="/projects/garment-workshop/key-visual.jpg">
                   <source src="/projects/garment-workshop/film.mp4" type="video/mp4" />
                 </video>
               </section>
