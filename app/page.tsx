@@ -43,12 +43,15 @@ const garmentWorkshopStills = [
   { src: "/projects/garment-workshop/still-05.jpg", alt: "精洗过程与面料" },
   { src: "/projects/garment-workshop/still-06.jpg", alt: "洗护设备与衣物" },
   { src: "/projects/garment-workshop/still-07.jpg", alt: "熨烫工艺细节" },
+  { src: "/projects/garment-workshop/still-08.jpg", alt: "衣物养护包装与服务卡" },
+  { src: "/projects/garment-workshop/still-09.jpg", alt: "完成养护后悬挂的服装" },
+  { src: "/projects/garment-workshop/still-10.jpg", alt: "针织衫修补过程" },
+  { src: "/projects/garment-workshop/still-11.jpg", alt: "专业整烫设备与西装" },
 ];
 
 const garmentWorkshopServiceKVs = [
   { src: "/projects/garment-workshop/service-kv-01.jpg", alt: "精致洗护服务视觉" },
   { src: "/projects/garment-workshop/service-kv-02.jpg", alt: "十年维修服务视觉" },
-  { src: "/projects/garment-workshop/service-kv-03.jpg", alt: "衣护工坊三项服务组合视觉" },
   { src: "/projects/garment-workshop/service-kv-04.jpg", alt: "甄选养护服务视觉" },
 ];
 
@@ -151,7 +154,10 @@ export default function Home() {
             <p>{activeProject.english}</p>
             <span>{activeProject.year}</span>
           </div>
-          <img src={activeProject.image} alt={`${activeProject.title} 项目封面`} />
+          <img
+            src={activeProject.id === "01" ? "/projects/garment-workshop/detail-cover.jpg" : activeProject.image}
+            alt={`${activeProject.title} 项目封面`}
+          />
           {activeProject.id === "01" ? (
             <article className="case-study garment-case">
               <section className="case-intro">
@@ -193,7 +199,7 @@ export default function Home() {
                   {garmentWorkshopServiceKVs.map((kv, index) => (
                     <figure key={kv.src}>
                       <img src={kv.src} alt={kv.alt} loading="lazy" />
-                      <figcaption>{String(index + 1).padStart(2, "0")} / 04</figcaption>
+                      <figcaption>{String(index + 1).padStart(2, "0")} / 03</figcaption>
                     </figure>
                   ))}
                 </div>
@@ -208,7 +214,7 @@ export default function Home() {
                   {garmentWorkshopStills.map((still, index) => (
                     <figure key={still.src}>
                       <img src={still.src} alt={still.alt} loading="lazy" />
-                      <figcaption>{String(index + 1).padStart(2, "0")} / 07</figcaption>
+                      <figcaption>{String(index + 1).padStart(2, "0")} / 11</figcaption>
                     </figure>
                   ))}
                 </div>
