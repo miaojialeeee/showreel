@@ -55,6 +55,8 @@ footer a { text-decoration: none; border-bottom: 1px solid; }
 .view-heading h1 { margin: 0; font-size: clamp(26px,2.8vw,48px); letter-spacing: -.045em; line-height: 1; font-weight: 500; white-space: nowrap; }
 .view-heading p, .view-heading span { margin: 0; font-size: 12px; }
 .project-view > img { display: block; width: 100%; height: auto; min-height: 0; object-fit: contain; background: #000; }
+.project-view.garment-view { background: #e9e5da; color: #171717; }
+.garment-view .view-heading { border-bottom: 1px solid rgba(0,0,0,.25); }
 .case-placeholder { padding: 80px 24px 120px; display: grid; grid-template-columns: 1fr 1.4fr 1.4fr; gap: 28px; font-size: 13px; line-height: 1.5; }
 .case-placeholder p { margin: 0; max-width: 52ch; }
 
@@ -68,17 +70,18 @@ footer a { text-decoration: none; border-bottom: 1px solid; }
 .case-en h2 { font-size: clamp(24px, 3.2vw, 54px); letter-spacing: -.045em; }
 .case-section-heading { padding: 26px var(--case-pad) 50px; display: grid; grid-template-columns: .7fr 1.5fr 1fr; gap: clamp(28px, 6vw, 110px); }
 .case-section-heading p { grid-column: 2; max-width: 42em; font-size: 13px; line-height: 1.6; }
-.case-film { padding: 90px 0 12vh; background: #151515; color: #eeeae0; }
-.case-film .case-section-heading p { color: rgba(255,255,255,.6); }
+.case-film { padding: 90px 0 12vh; border-bottom: 1px solid rgba(0,0,0,.25); }
+.case-film .case-section-heading p { color: rgba(0,0,0,.58); }
 .case-film video { display: block; width: calc(100% - 2 * var(--case-pad)); max-height: 84vh; margin: 0 auto; background: #000; object-fit: contain; }
-.case-key-visual { padding: 90px 0 14vh; }
+.case-key-visual { padding: 90px 0 14vh; border-bottom: 1px solid rgba(0,0,0,.25); }
 .case-key-visual > img { display: block; width: calc(100% - 2 * var(--case-pad)); height: auto; margin: 0 auto; }
-.case-gallery-section { padding: 90px 0 14vh; background: #272620; color: #eeeae0; overflow: hidden; }
-.case-gallery-section .case-section-heading p { color: rgba(255,255,255,.6); }
-.case-gallery { display: flex; gap: 12px; padding: 0 var(--case-pad) 22px; overflow-x: auto; overscroll-behavior-inline: contain; scroll-snap-type: x mandatory; scrollbar-color: rgba(255,255,255,.45) transparent; cursor: ew-resize; }
-.case-gallery figure { flex: 0 0 min(37vw, 520px); margin: 0; scroll-snap-align: start; }
+.service-kv-section, .case-gallery-section { padding: 90px 0 14vh; overflow: hidden; border-bottom: 1px solid rgba(0,0,0,.25); }
+.service-kv-section .case-section-heading p, .case-gallery-section .case-section-heading p { color: rgba(0,0,0,.58); }
+.service-kv-gallery, .case-gallery { display: flex; gap: 12px; padding: 0 var(--case-pad) 22px; overflow-x: auto; overscroll-behavior-inline: contain; scroll-snap-type: x mandatory; scrollbar-color: rgba(0,0,0,.38) transparent; cursor: ew-resize; }
+.service-kv-gallery figure, .case-gallery figure { flex: 0 0 min(37vw, 520px); margin: 0; scroll-snap-align: start; }
+.service-kv-gallery img { display: block; width: 100%; height: min(72vw, 780px); object-fit: contain; object-position: top; }
 .case-gallery img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
-.case-gallery figcaption { padding-top: 10px; color: rgba(255,255,255,.55); font-size: 10px; }
+.service-kv-gallery figcaption, .case-gallery figcaption { padding-top: 10px; color: rgba(0,0,0,.5); font-size: 10px; }
 .case-role { min-height: 72vh; padding: 12vh var(--case-pad); display: grid; grid-template-columns: .7fr 1.5fr 1fr; gap: clamp(28px, 6vw, 110px); align-content: center; }
 .case-role h2 { font-size: clamp(30px, 4vw, 68px); font-weight: 400; letter-spacing: -.055em; line-height: 1.03; }
 .case-role p { font-size: 14px; line-height: 1.7; }
@@ -109,10 +112,11 @@ footer a { text-decoration: none; border-bottom: 1px solid; }
   .case-intro h2 { margin-bottom: 22px; }
   .case-section-heading { padding-bottom: 30px; grid-template-columns: 1fr; gap: 18px; }
   .case-section-heading p { grid-column: auto; }
-  .case-film, .case-key-visual, .case-gallery-section { padding-top: 62px; padding-bottom: 80px; }
+  .case-film, .case-key-visual, .service-kv-section, .case-gallery-section { padding-top: 62px; padding-bottom: 80px; }
   .case-film video, .case-key-visual > img { width: 100%; }
-  .case-gallery { padding-right: 20vw; }
-  .case-gallery figure { flex-basis: 76vw; }
+  .service-kv-gallery, .case-gallery { padding-right: 20vw; }
+  .service-kv-gallery figure, .case-gallery figure { flex-basis: 76vw; }
+  .service-kv-gallery img { height: 120vw; }
   .case-role { min-height: auto; padding-top: 80px; padding-bottom: 90px; grid-template-columns: 1fr; }
   .project-card { cursor: pointer; }
   .project-cursor { display: none; }

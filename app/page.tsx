@@ -45,6 +45,13 @@ const garmentWorkshopStills = [
   { src: "/projects/garment-workshop/still-07.jpg", alt: "熨烫工艺细节" },
 ];
 
+const garmentWorkshopServiceKVs = [
+  { src: "/projects/garment-workshop/service-kv-01.jpg", alt: "精致洗护服务视觉" },
+  { src: "/projects/garment-workshop/service-kv-02.jpg", alt: "十年维修服务视觉" },
+  { src: "/projects/garment-workshop/service-kv-03.jpg", alt: "衣护工坊三项服务组合视觉" },
+  { src: "/projects/garment-workshop/service-kv-04.jpg", alt: "甄选养护服务视觉" },
+];
+
 export default function Home() {
   const [activeProject, setActiveProject] = useState<Project | null>(null);
   const [activeCategory, setActiveCategory] = useState<(typeof categories)[number]["id"]>("all");
@@ -136,7 +143,7 @@ export default function Home() {
       </footer>
 
       {activeProject && (
-        <div className="project-view" role="dialog" aria-modal="true" aria-label={activeProject.title}>
+        <div className={`project-view ${activeProject.id === "01" ? "garment-view" : ""}`} role="dialog" aria-modal="true" aria-label={activeProject.title}>
           <button className="close-view" onClick={() => setActiveProject(null)}>Close ×</button>
           <div className="view-heading">
             <span>Project {activeProject.id}</span>
@@ -177,9 +184,24 @@ export default function Home() {
                 <img src="/projects/garment-workshop/key-visual.jpg" alt="衣护工坊主视觉：让衣物，超越时间" />
               </section>
 
+              <section className="service-kv-section">
+                <div className="case-section-heading">
+                  <span>04 / Service Visuals</span>
+                  <p>围绕维修、洗护与养护三项核心服务，将视觉语言延展为可直接触达消费者的系列传播画面。</p>
+                </div>
+                <div className="service-kv-gallery" aria-label="衣护工坊服务视觉，横向滑动浏览" tabIndex={0}>
+                  {garmentWorkshopServiceKVs.map((kv, index) => (
+                    <figure key={kv.src}>
+                      <img src={kv.src} alt={kv.alt} loading="lazy" />
+                      <figcaption>{String(index + 1).padStart(2, "0")} / 04</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+
               <section className="case-gallery-section">
                 <div className="case-section-heading">
-                  <span>04 / Visual Language</span>
+                  <span>05 / Visual Language</span>
                   <p>近距离观察面料、器具与工艺痕迹。左右滑动浏览完整摄影系列。</p>
                 </div>
                 <div className="case-gallery" aria-label="衣护工坊视觉摄影，横向滑动浏览" tabIndex={0}>
@@ -193,7 +215,7 @@ export default function Home() {
               </section>
 
               <section className="case-role">
-                <span>05 / Role</span>
+                <span>06 / Role</span>
                 <h2>KV Visual Creative<br />Video Visual Planning</h2>
                 <div>
                   <p>负责项目整体视觉方向制定，梳理品牌服务定位与视觉表达体系；提炼维修、精洗、养护三大服务场景的核心视觉符号；完成 KV 画面创意策划与视觉设计，并参与短片内容策划与摄影风格统筹。</p>
