@@ -175,7 +175,10 @@ export default function Home() {
               <section className="case-film">
                 <div className="case-section-heading">
                   <span>02 / Brand Film</span>
-                  <p>从细密针脚到蒸汽熨烫，以工坊纪录片式的镜头语言呈现衣物护理中的时间价值与手工温度。</p>
+                  <div className="film-copy">
+                    <p>从细密针脚到蒸汽熨烫，以工坊纪录片式的镜头语言呈现衣物护理中的时间价值与手工温度。</p>
+                    <span className="film-cta">点击观看衣护工坊视频 ↓︎</span>
+                  </div>
                 </div>
                 <video controls playsInline preload="none" poster="/projects/garment-workshop/key-visual.jpg">
                   <source src="/projects/garment-workshop/film.mp4" type="video/mp4" />
