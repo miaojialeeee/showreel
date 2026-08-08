@@ -68,7 +68,7 @@ export default function Home() {
           <span>品牌视觉设计师</span>
         </div>
         <div className="edition">Selected Works<br />2025—2026</div>
-        <a className="about-link" href="#about">About ↘</a>
+        <a className="about-link" href="#about">About ↘︎</a>
       </header>
 
       <nav className="filters" aria-label="项目分类">
@@ -108,7 +108,7 @@ export default function Home() {
               <span>{project.english}</span>
             </span>
             <span className="project-year">{project.year}</span>
-            <span className="project-arrow">↗</span>
+            <span className="project-arrow">↗︎</span>
           </button>
         ))}
 
@@ -122,7 +122,7 @@ export default function Home() {
       <footer>
         <span>Samuel 缪嘉乐</span>
         <span>Brand Visual Designer · 品牌视觉设计师</span>
-        <a href="#top">Back to top ↑</a>
+        <a href="#top">Back to top ↑︎</a>
       </footer>
 
       {activeProject && (
@@ -148,7 +148,7 @@ export default function Home() {
         style={{ transform: `translate3d(${cursor.x}px, ${cursor.y}px, 0)` }}
         aria-hidden="true"
       >
-        View ↗
+        View ↗︎
       </div>
     </main>
   );
