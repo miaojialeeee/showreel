@@ -84,7 +84,7 @@ export default function Home() {
       <footer>
         <span>Samuel 缪嘉乐</span>
         <span>Brand Visual Designer · 品牌视觉设计师</span>
-        <a href="mailto:hello@samuel.design">Get in touch ↗</a>
+        <a href="#top">Back to top ↑</a>
       </footer>
 
       {activeProject && (
