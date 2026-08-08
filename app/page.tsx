@@ -35,6 +35,16 @@ const categories = [
   { id: "personal", label: "Personal" },
 ] as const;
 
+const garmentWorkshopStills = [
+  { src: "/projects/garment-workshop/still-01.jpg", alt: "针线与修补工具" },
+  { src: "/projects/garment-workshop/still-02.jpg", alt: "针织衫纽扣修复细节" },
+  { src: "/projects/garment-workshop/still-03.jpg", alt: "完成养护的服装" },
+  { src: "/projects/garment-workshop/still-04.jpg", alt: "面料去绒养护细节" },
+  { src: "/projects/garment-workshop/still-05.jpg", alt: "精洗过程与面料" },
+  { src: "/projects/garment-workshop/still-06.jpg", alt: "洗护设备与衣物" },
+  { src: "/projects/garment-workshop/still-07.jpg", alt: "熨烫工艺细节" },
+];
+
 export default function Home() {
   const [activeProject, setActiveProject] = useState<Project | null>(null);
   const [activeCategory, setActiveCategory] = useState<(typeof categories)[number]["id"]>("all");
@@ -135,11 +145,69 @@ export default function Home() {
             <span>{activeProject.year}</span>
           </div>
           <img src={activeProject.image} alt={`${activeProject.title} 项目封面`} />
-          <div className="case-placeholder">
-            <span>Case study</span>
-            <p>项目详情页已预留。后续可加入背景、创意策略、视觉系统、执行过程与最终成果。</p>
-            <p>The full case study can expand here with context, creative direction, visual system, process and outcomes.</p>
-          </div>
+          {activeProject.id === "01" ? (
+            <article className="case-study garment-case">
+              <section className="case-intro">
+                <span className="case-index">01 / Overview</span>
+                <div>
+                  <h2>让衣物，超越时间</h2>
+                  <p>随着消费者对服装品质与长期使用价值的关注提升，江南布衣通过会员服务体系「衣护工坊」，为衣物提供维修、精洗、养护与整理等一站式护理服务。</p>
+                </div>
+                <div className="case-en">
+                  <h2>Beyond time,<br />through care.</h2>
+                  <p>Garment Workshop extends the life and value of clothing through an integrated service spanning repair, specialist cleaning, care and finishing.</p>
+                </div>
+              </section>
+
+              <section className="case-film">
+                <div className="case-section-heading">
+                  <span>02 / Brand Film</span>
+                  <p>从细密针脚到蒸汽熨烫，以工坊纪录片式的镜头语言呈现衣物护理中的时间价值与手工温度。</p>
+                </div>
+                <video controls playsInline preload="metadata" poster="/projects/garment-workshop/key-visual.jpg">
+                  <source src="/projects/garment-workshop/film.mp4" type="video/mp4" />
+                </video>
+              </section>
+
+              <section className="case-key-visual">
+                <div className="case-section-heading">
+                  <span>03 / Key Visual</span>
+                  <p>克制、质朴的影像语气，以维修、养护与精洗三个服务场景建立核心视觉符号。</p>
+                </div>
+                <img src="/projects/garment-workshop/key-visual.jpg" alt="衣护工坊主视觉：让衣物，超越时间" />
+              </section>
+
+              <section className="case-gallery-section">
+                <div className="case-section-heading">
+                  <span>04 / Visual Language</span>
+                  <p>近距离观察面料、器具与工艺痕迹。左右滑动浏览完整摄影系列。</p>
+                </div>
+                <div className="case-gallery" aria-label="衣护工坊视觉摄影，横向滑动浏览" tabIndex={0}>
+                  {garmentWorkshopStills.map((still, index) => (
+                    <figure key={still.src}>
+                      <img src={still.src} alt={still.alt} loading="lazy" />
+                      <figcaption>{String(index + 1).padStart(2, "0")} / 07</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+
+              <section className="case-role">
+                <span>05 / Role</span>
+                <h2>KV Visual Creative<br />Video Visual Planning</h2>
+                <div>
+                  <p>负责项目整体视觉方向制定，梳理品牌服务定位与视觉表达体系；提炼维修、精洗、养护三大服务场景的核心视觉符号；完成 KV 画面创意策划与视觉设计，并参与短片内容策划与摄影风格统筹。</p>
+                  <p className="case-en">Visual direction, key visual concept and design, brand film planning, photographic direction and visual consistency across the campaign.</p>
+                </div>
+              </section>
+            </article>
+          ) : (
+            <div className="case-placeholder">
+              <span>Case study</span>
+              <p>项目详情页已预留。后续可加入背景、创意策略、视觉系统、执行过程与最终成果。</p>
+              <p>The full case study can expand here with context, creative direction, visual system, process and outcomes.</p>
+            </div>
+          )}
         </div>
       )}
 
