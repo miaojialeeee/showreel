@@ -13,18 +13,19 @@ type Project = {
 };
 
 const projects: Project[] = [
-  { id: "02", title: "江南布衣 ×「衣护工坊」", english: "JNBY × Garment Workshop", year: "2026", image: "/projects/02-garment-workshop.jpg", size: "project", focus: "center" },
   { id: "01", title: "LESS 26SS 大片", english: "LESS SS26 Campaign", year: "2025", image: "/projects/01-less.jpg", size: "small less", focus: "center" },
-  { id: "07", title: "珀莱雅 × Pingu", english: "PROYA × Pingu", year: "2026", image: "/projects/07-proya-pingu.jpg", size: "secondary", focus: "center" },
-  { id: "04", title: "江南布衣 ×「不在服务区」", english: "JNBY × Out of Service", year: "2025", image: "/projects/04-jnby.jpg", size: "project", focus: "center" },
+  { id: "02", title: "江南布衣 ×「衣护工坊」", english: "JNBY × Garment Workshop", year: "2026", image: "/projects/02-garment-workshop.jpg", size: "project", focus: "center" },
   { id: "03", title: "珀莱雅 × EVAN", english: "PROYA × EVAN", year: "2026", image: "/projects/03-proya-evan.jpg", size: "medium", focus: "center" },
-  { id: "06", title: "速写 26SS 大片", english: "CROQUIS SS26 Campaign", year: "2025", image: "/projects/06-croquis.jpg", size: "small", focus: "center" },
+  { id: "04", title: "江南布衣 ×「不在服务区」", english: "JNBY × Out of Service", year: "2025", image: "/projects/04-jnby.jpg", size: "project", focus: "center" },
   { id: "05", title: "珀莱雅 × 李小冉", english: "PROYA × Li Xiaoran", year: "2026", image: "/projects/05-proya-xiaoran.jpg", size: "small", focus: "center" },
+  { id: "06", title: "速写 26SS 大片", english: "CROQUIS SS26 Campaign", year: "2025", image: "/projects/06-croquis.jpg", size: "small", focus: "center" },
+  { id: "07", title: "珀莱雅 × Pingu", english: "PROYA × Pingu", year: "2026", image: "/projects/07-proya-pingu.jpg", size: "secondary", focus: "center" },
   { id: "08", title: "RERERELAB 26SS 大片", english: "RERERELAB SS26 Campaign", year: "2025", image: "/projects/08-rererelab.jpg", size: "wide", focus: "center" },
 ];
 
 export default function Home() {
   const [activeProject, setActiveProject] = useState<Project | null>(null);
+  const [cursor, setCursor] = useState({ x: 0, y: 0, visible: false });
 
   useEffect(() => {
     document.body.style.overflow = activeProject ? "hidden" : "";
@@ -60,6 +61,9 @@ export default function Home() {
             className={`project-card ${project.size}`}
             key={project.id}
             onClick={() => setActiveProject(project)}
+            onMouseEnter={(event) => setCursor({ x: event.clientX, y: event.clientY, visible: true })}
+            onMouseMove={(event) => setCursor({ x: event.clientX, y: event.clientY, visible: true })}
+            onMouseLeave={() => setCursor((current) => ({ ...current, visible: false }))}
             aria-label={`查看项目：${project.title}`}
           >
             <img src={project.image} alt="" style={{ objectPosition: project.focus }} />
@@ -104,6 +108,14 @@ export default function Home() {
           </div>
         </div>
       )}
+
+      <div
+        className={`project-cursor ${cursor.visible ? "is-visible" : ""}`}
+        style={{ transform: `translate3d(${cursor.x}px, ${cursor.y}px, 0)` }}
+        aria-hidden="true"
+      >
+        View ↗
+      </div>
     </main>
   );
 }

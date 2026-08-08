@@ -15,7 +15,7 @@ button { font: inherit; }
 .about-link { justify-self: end; text-decoration: none; border-bottom: 1px solid currentColor; }
 
 .project-grid { padding: 5px; display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 5px; }
-.project-card { position: relative; display: block; aspect-ratio: 16 / 9; padding: 0; border: 0; overflow: hidden; background: #111; cursor: pointer; text-align: left; }
+.project-card { position: relative; display: block; aspect-ratio: 16 / 9; padding: 0; border: 0; overflow: hidden; background: #111; cursor: none; text-align: left; }
 .project-card img { width: 100%; height: 100%; object-fit: contain; display: block; transition: opacity .35s ease; }
 .project-card .shade { position: absolute; inset: 0; background: rgba(0,0,0,.28); opacity: 0; transition: opacity .35s ease; }
 .project-card:hover img, .project-card:focus-visible img { opacity: .88; }
@@ -32,6 +32,9 @@ button { font: inherit; }
 .about-card { grid-column: 1 / -1; min-height: 280px; padding: 22px; background: #d9ff43; color: #111; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-content: space-between; font-size: clamp(18px, 2.2vw, 36px); line-height: 1.15; }
 .about-card p { margin: 0 0 12px; }
 .about-card span { grid-column: 1 / -1; margin-top: 70px; font-size: 11px; }
+
+.project-cursor { position: fixed; z-index: 50; left: 0; top: 0; width: 78px; height: 78px; margin: -39px 0 0 -39px; display: grid; place-items: center; border-radius: 50%; background: #d9ff43; color: #111; font-size: 11px; letter-spacing: .04em; text-transform: uppercase; pointer-events: none; opacity: 0; scale: .55; transition: opacity .18s ease, scale .3s cubic-bezier(.2,.8,.2,1); }
+.project-cursor.is-visible { opacity: 1; scale: 1; }
 
 footer { min-height: 180px; padding: 26px 24px; display: grid; grid-template-columns: 1fr 1fr auto; gap: 24px; align-items: end; border-top: 1px solid var(--line); font-size: 12px; }
 footer a { text-decoration: none; border-bottom: 1px solid; }
@@ -64,6 +67,8 @@ footer a { text-decoration: none; border-bottom: 1px solid; }
   .view-heading h1 { grid-column: 1 / -1; }
   .view-heading p { grid-column: 1; }
   .case-placeholder { grid-template-columns: 1fr; padding-top: 48px; }
+  .project-card { cursor: pointer; }
+  .project-cursor { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } }
