@@ -42,8 +42,8 @@ footer a { text-decoration: none; border-bottom: 1px solid; }
 .project-view { position: fixed; z-index: 20; inset: 0; overflow-y: auto; background: var(--paper); color: var(--ink); animation: viewIn .45s cubic-bezier(.2,.75,.25,1); }
 @keyframes viewIn { from { transform: translateY(100%); } to { transform: translateY(0); } }
 .close-view { position: fixed; z-index: 2; right: 18px; top: 16px; border: 1px solid rgba(255,255,255,.5); border-radius: 99px; background: rgba(0,0,0,.66); color: white; padding: 10px 16px; cursor: pointer; backdrop-filter: blur(12px); }
-.view-heading { padding: 28px 24px 38px; display: grid; grid-template-columns: .65fr 3.2fr 1.35fr auto; gap: 20px; align-items: end; }
-.view-heading h1 { margin: 0; font-size: clamp(32px,3.8vw,64px); letter-spacing: -.055em; line-height: .95; font-weight: 500; white-space: nowrap; }
+.view-heading { padding: 28px 24px 38px; display: grid; grid-template-columns: .5fr 3.8fr 1.35fr auto; gap: 20px; align-items: end; }
+.view-heading h1 { margin: 0; font-size: clamp(26px,2.8vw,48px); letter-spacing: -.045em; line-height: 1; font-weight: 500; white-space: nowrap; }
 .view-heading p, .view-heading span { margin: 0; font-size: 12px; }
 .project-view > img { display: block; width: 100%; height: auto; min-height: 50vh; object-fit: cover; }
 .case-placeholder { padding: 80px 24px 120px; display: grid; grid-template-columns: 1fr 1.4fr 1.4fr; gap: 28px; font-size: 13px; line-height: 1.5; }
