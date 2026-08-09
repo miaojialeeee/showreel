@@ -472,9 +472,22 @@ export default function Home() {
                 </div>
               </section>
 
+              <section className="dark-film-section rere-film-section">
+                <div className="case-section-heading">
+                  <span>01 / Campaign Film</span>
+                  <div className="film-copy">
+                    <p>从海边、街道与日常场景出发，以持续行走的身体状态串联系列影像，让“边走边看”从一句概念成为真实发生的观看方式。</p>
+                    <span className="film-cta">点击观看《边走边看》成片 ↓︎</span>
+                  </div>
+                </div>
+                <video controls playsInline preload="none" poster="/projects/rererelab-walk-see/cover.jpg">
+                  <source src="/projects/rererelab-walk-see/film.mp4" type="video/mp4" />
+                </video>
+              </section>
+
               <section className="rere-kv-section">
                 <div className="case-section-heading">
-                  <span>01 / Key Visuals</span>
+                  <span>02 / Key Visuals</span>
                   <p>春与夏的主视觉从海风、阳光与身体动作出发，以更开放、松弛的影像语言建立系列基调。</p>
                 </div>
                 <div className="rere-kv-gallery">
@@ -489,7 +502,7 @@ export default function Home() {
 
               <section className="rere-series-section">
                 <div className="case-section-heading">
-                  <span>02 / Spring</span>
+                  <span>03 / Spring</span>
                   <p>在帆船、海岸与街角之间，让风与衣摆共同完成画面；人物不是被摆放的主体，而是持续经过风景的人。</p>
                 </div>
                 <div className="rere-editorial">
@@ -504,7 +517,7 @@ export default function Home() {
 
               <section className="rere-series-section rere-summer-section">
                 <div className="case-section-heading">
-                  <span>03 / Summer</span>
+                  <span>04 / Summer</span>
                   <p>更直接的光线、更轻快的动作与更饱满的色彩，让“边走边看”从观察转向身体参与。</p>
                 </div>
                 <div className="rere-editorial">
@@ -518,7 +531,7 @@ export default function Home() {
               </section>
 
               <section className="case-role rere-role">
-                <span>04 / Role</span>
+                <span>05 / Role</span>
                 <h2>Brand Visual Design<br />Campaign Planning</h2>
                 <div>
                   <p>负责 RERERELAB C5 系列大片的视觉创意与设计执行：参与「边走边看」概念梳理与视觉方向制定；建立符合品牌年轻化定位的影像语言；参与 KV 构思、构图规划与视觉呈现，并统筹系列视觉资产输出。</p>
@@ -531,7 +544,7 @@ export default function Home() {
               <section className="case-intro dark-case-intro">
                 <span className="case-index">Campaign / Overview</span>
                 <div>
-                  <h2>改变位置，<br />看见新的视角</h2>
+                  <h2>这世界没有真相，<br />只有视角</h2>
                   <p>速写 26SS 以“阶梯”为视觉线索，把向上行走、短暂停留与再次出发转化为影像节奏。在品牌二十周年的节点上，人物不断改变位置，也不断重新观看自己与周围的世界。</p>
                 </div>
                 <div className="case-en">
