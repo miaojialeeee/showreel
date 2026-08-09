@@ -20,7 +20,7 @@ const projects: Project[] = [
   { id: "04", title: "珀莱雅 × Pingu", english: "PROYA × Pingu", year: "2026", image: "/projects/07-proya-pingu.jpg", size: "secondary", focus: "center", category: "beauty" },
   { id: "05", title: "珀莱雅 × EVAN", english: "PROYA × EVAN", year: "2026", image: "/projects/03-proya-evan.jpg", size: "medium", focus: "center", category: "beauty" },
   { id: "06", title: "珀莱雅 × 李小冉", english: "PROYA × Li Xiaoran", year: "2026", image: "/projects/05-proya-xiaoran.jpg", size: "small", focus: "center", category: "beauty" },
-  { id: "07", title: "速写 26SS 大片", english: "CROQUIS SS26 Campaign", year: "2025", image: "/projects/06-croquis.jpg", size: "small", focus: "center", category: "fashion" },
+  { id: "07", title: "速写 26SS 大片", english: "CROQUIS SS26 Campaign", year: "2025", image: "/projects/croquis-ss26/cover.jpg", size: "small", focus: "center", category: "fashion" },
   { id: "08", title: "LESS 26SS 品牌册", english: "LESS SS26 Brand Book", year: "2026", image: "/projects/01-less.jpg", size: "small less", focus: "center", category: "fashion" },
   { id: "09", title: "PROYA ×「孟子义」", english: "PROYA × Meng Ziyi", year: "2026", image: "/projects/09-proya-mengziyi.jpg", size: "project", focus: "center", category: "beauty" },
   { id: "10", title: "江南布衣 ×「布尽其用」", english: "JNBY × Reuse", year: "2025", image: "/projects/10-jnby-reuse.jpg", size: "project", focus: "center", category: "fashion" },
@@ -110,6 +110,41 @@ const lessBookPages = Array.from({ length: 50 }, (_, index) => ({
 
 const lessSelectedPageNumbers = [3, 9, 12, 13, 15, 17, 26, 34, 38, 41, 46, 47];
 const lessSelectedPages = lessSelectedPageNumbers.map((page) => lessBookPages[page - 1]);
+
+const croquisKeyVisuals = Array.from({ length: 3 }, (_, index) => ({
+  src: `/projects/croquis-ss26/kv-${String(index + 1).padStart(2, "0")}.jpg`,
+  alt: `速写 26SS 主视觉 ${index + 1}`,
+}));
+
+const croquisMainImages = Array.from({ length: 6 }, (_, index) => ({
+  src: `/projects/croquis-ss26/main-${String(index + 1).padStart(2, "0")}.jpg`,
+  alt: `速写 26SS 主线大片 ${index + 1}`,
+}));
+
+const croquisBlackImages = Array.from({ length: 6 }, (_, index) => ({
+  src: `/projects/croquis-ss26/black-${String(index + 1).padStart(2, "0")}.jpg`,
+  alt: `速写 26SS 黑支线大片 ${index + 1}`,
+}));
+
+const fishResearchImages = Array.from({ length: 6 }, (_, index) => ({
+  src: `/projects/about-fish/research-${String(index + 1).padStart(2, "0")}.jpg`,
+  alt: `观鱼田野调研与内容梳理 ${index + 1}`,
+}));
+
+const fishMainVisuals = Array.from({ length: 4 }, (_, index) => ({
+  src: `/projects/about-fish/main-${String(index + 1).padStart(2, "0")}.jpg`,
+  alt: `观鱼主视觉 ${index + 1}`,
+}));
+
+const fishModels = Array.from({ length: 4 }, (_, index) => ({
+  src: `/projects/about-fish/model-${String(index + 1).padStart(2, "0")}.jpg`,
+  alt: `观鱼数字鱼灯模型 ${index + 1}`,
+}));
+
+const fishEditorialImages = Array.from({ length: 5 }, (_, index) => ({
+  src: `/projects/about-fish/editorial-${String(index + 1).padStart(2, "0")}.jpg`,
+  alt: `观鱼书籍设计 ${index + 1}`,
+}));
 
 export default function Home() {
   const [activeProject, setActiveProject] = useState<Project | null>(null);
@@ -202,7 +237,7 @@ export default function Home() {
       </footer>
 
       {activeProject && (
-        <div className={`project-view ${activeProject.id === "01" ? "garment-view" : ""} ${activeProject.id === "02" ? "out-service-view" : ""} ${activeProject.id === "03" ? "rere-view" : ""} ${activeProject.id === "08" ? "less-book-view" : ""}`} role="dialog" aria-modal="true" aria-label={activeProject.title}>
+        <div className={`project-view ${activeProject.id === "01" ? "garment-view" : ""} ${activeProject.id === "02" ? "out-service-view" : ""} ${activeProject.id === "03" ? "rere-view" : ""} ${activeProject.id === "07" ? "croquis-view" : ""} ${activeProject.id === "08" ? "less-book-view" : ""} ${activeProject.id === "12" ? "fish-view" : ""}`} role="dialog" aria-modal="true" aria-label={activeProject.title}>
           <button className="close-view" onClick={() => setActiveProject(null)}>Close ×</button>
           <div className="view-heading">
             <span>Project {activeProject.id}</span>
@@ -217,6 +252,8 @@ export default function Home() {
                 ? "/projects/out-of-service/detail-cover.jpg"
                 : activeProject.id === "03"
                   ? "/projects/rererelab-walk-see/cover.jpg"
+                  : activeProject.id === "07"
+                    ? "/projects/croquis-ss26/cover.jpg"
                   : activeProject.id === "08"
                     ? "/projects/less-brandbook/cover.jpg"
                 : activeProject.image}
@@ -489,6 +526,87 @@ export default function Home() {
                 </div>
               </section>
             </article>
+          ) : activeProject.id === "07" ? (
+            <article className="case-study croquis-case">
+              <section className="case-intro dark-case-intro">
+                <span className="case-index">Campaign / Overview</span>
+                <div>
+                  <h2>改变位置，<br />看见新的视角</h2>
+                  <p>速写 26SS 以“阶梯”为视觉线索，把向上行走、短暂停留与再次出发转化为影像节奏。在品牌二十周年的节点上，人物不断改变位置，也不断重新观看自己与周围的世界。</p>
+                </div>
+                <div className="case-en">
+                  <h2>A shift in position.<br />A shift in perspective.</h2>
+                  <p>Stairs become a metaphor for movement and reflection, shaping a campaign that moves between ascent, pause and a renewed point of view.</p>
+                </div>
+              </section>
+
+              <section className="dark-film-section">
+                <div className="case-section-heading">
+                  <span>01 / Campaign Film</span>
+                  <div className="film-copy">
+                    <p>以行走、停顿与空间转换建立节奏，让人物关系在现实道路与象征性的“阶梯”之间逐渐展开。</p>
+                    <span className="film-cta">点击观看速写 26SS 成片 ↓︎</span>
+                  </div>
+                </div>
+                <video controls playsInline preload="none" poster="/projects/croquis-ss26/cover.jpg">
+                  <source src="/projects/croquis-ss26/film.mp4" type="video/mp4" />
+                </video>
+              </section>
+
+              <section className="dark-kv-section">
+                <div className="case-section-heading">
+                  <span>02 / Key Visuals</span>
+                  <p>以公路、旷野与停车场构成开放场域，通过人物距离、动作和道具建立带有叙事感的系列主视觉。</p>
+                </div>
+                <div className="dark-kv-gallery" aria-label="速写 26SS 主视觉，横向滑动浏览" tabIndex={0}>
+                  {croquisKeyVisuals.map((item, index) => (
+                    <figure key={item.src}>
+                      <img src={item.src} alt={item.alt} loading="lazy" />
+                      <figcaption>{String(index + 1).padStart(2, "0")} / 03</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+
+              <section className="dark-editorial-section">
+                <div className="case-section-heading">
+                  <span>03 / Main Story</span>
+                  <p>主线影像在运动与静止之间切换，以更松弛的页面节奏保留人物、服装和环境之间的呼吸感。</p>
+                </div>
+                <div className="dark-editorial-grid">
+                  {croquisMainImages.map((item, index) => (
+                    <figure key={item.src}>
+                      <img src={item.src} alt={item.alt} loading="lazy" />
+                      <figcaption>Main Story · {String(index + 1).padStart(2, "0")}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+
+              <section className="dark-editorial-section dark-branch-section">
+                <div className="case-section-heading">
+                  <span>04 / Black Line</span>
+                  <p>黑支线以更强的明暗关系、舞台感与双重人物状态，回应“改变视角”所带来的内在张力。</p>
+                </div>
+                <div className="dark-editorial-grid dark-branch-grid">
+                  {croquisBlackImages.map((item, index) => (
+                    <figure key={item.src}>
+                      <img src={item.src} alt={item.alt} loading="lazy" />
+                      <figcaption>Black Line · {String(index + 1).padStart(2, "0")}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+
+              <section className="case-role dark-case-role">
+                <span>05 / Role</span>
+                <h2>Campaign Visual Direction<br />Key Visual Planning</h2>
+                <div>
+                  <p>围绕“阶梯”与“视角变化”梳理整季视觉概念，参与 Campaign 视觉方向、KV 构图与平面延展，并统筹主线与黑支线的影像语气。</p>
+                  <p className="case-en">Campaign concept development, visual direction, key visual planning and a coherent image language across the main story and black line.</p>
+                </div>
+              </section>
+            </article>
           ) : activeProject.id === "08" ? (
             <article className="case-study less-book-case">
               <section className="case-intro less-book-intro">
@@ -539,6 +657,106 @@ export default function Home() {
                 <div>
                   <p>围绕 “LESS IS MORE” 梳理品牌理念、影像资产与产品信息，以现代建筑美学为灵感，建立克制、清晰且具有秩序感的品牌册叙事。</p>
                   <p className="case-en">Brand book visual direction, editorial structure, image sequencing and layout design.</p>
+                </div>
+              </section>
+            </article>
+          ) : activeProject.id === "12" ? (
+            <article className="case-study fish-case">
+              <section className="case-intro dark-case-intro fish-intro">
+                <span className="case-index">Cultural Research / Overview</span>
+                <div>
+                  <h2>看见一盏鱼灯，<br />也看见它背后的生活</h2>
+                  <p>「观鱼」以浙江青田鱼灯为研究对象，从田野影像、口述资料与传统工艺出发，梳理鱼灯的造型、色彩、动作与集体记忆，并将其转化为一套当代视觉叙事。</p>
+                </div>
+                <div className="case-en">
+                  <h2>To see the fish<br />is to see its living memory.</h2>
+                  <p>A visual research project that traces the craft, movement and communal memory of Qingtian fish lanterns, translating them into a contemporary visual language.</p>
+                </div>
+              </section>
+
+              <section className="fish-scroll-section">
+                <div className="case-section-heading">
+                  <span>01 / Field Research</span>
+                  <p>从地方环境、节庆现场与传承人口述出发，建立项目的文化语境，并提炼鱼灯制作、表演与传播中的关键信息。</p>
+                </div>
+                <div className="fish-scroll-gallery" aria-label="观鱼田野调研，横向滑动浏览" tabIndex={0}>
+                  {fishResearchImages.map((item, index) => (
+                    <figure key={item.src}>
+                      <img src={item.src} alt={item.alt} loading="lazy" />
+                      <figcaption>{String(index + 1).padStart(2, "0")} / 06</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+
+              <section className="fish-visual-section">
+                <div className="case-section-heading">
+                  <span>02 / Visual System</span>
+                  <p>保留鱼灯表演中强烈的夜色、火光与动态残影，让民俗现场与当代图形语言在同一画面中相遇。</p>
+                </div>
+                <div className="fish-main-grid">
+                  {fishMainVisuals.map((item, index) => (
+                    <figure key={item.src}>
+                      <img src={item.src} alt={item.alt} loading="lazy" />
+                      <figcaption>Key Visual · {String(index + 1).padStart(2, "0")}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+
+              <section className="fish-model-section">
+                <div className="case-section-heading">
+                  <span>03 / Digital Fish Lanterns</span>
+                  <p>提取鱼灯的骨架、鳞片、色彩与游动姿态，构建四组数字鱼灯模型，使传统造型获得新的观看方式。</p>
+                </div>
+                <div className="fish-model-grid">
+                  {fishModels.map((item, index) => (
+                    <figure key={item.src}>
+                      <img src={item.src} alt={item.alt} loading="lazy" />
+                      <figcaption>Fish · {String(index + 1).padStart(2, "0")}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+                <figure className="fish-process">
+                  <img src="/projects/about-fish/process.jpg" alt="观鱼视觉推演过程" loading="lazy" />
+                  <figcaption>Form & Motion Study</figcaption>
+                </figure>
+              </section>
+
+              <section className="dark-film-section fish-film-section">
+                <div className="case-section-heading">
+                  <span>04 / Film</span>
+                  <div className="film-copy">
+                    <p>以现场影像、声音与数字鱼灯的动态关系，呈现传统民俗在当代媒介中的另一种生命力。</p>
+                    <span className="film-cta">点击观看《观鱼》成片 ↓︎</span>
+                  </div>
+                </div>
+                <video controls playsInline preload="none" poster="/projects/12-about-fish.jpg">
+                  <source src="/projects/about-fish/film.mp4" type="video/mp4" />
+                </video>
+              </section>
+
+              <section className="fish-scroll-section fish-editorial-section">
+                <div className="case-section-heading">
+                  <span>05 / Editorial</span>
+                  <p>以书籍串联调研、图像分析、视觉系统与最终呈现，让信息密度与阅读节奏保持平衡。</p>
+                </div>
+                <div className="fish-scroll-gallery" aria-label="观鱼书籍设计，横向滑动浏览" tabIndex={0}>
+                  {fishEditorialImages.map((item, index) => (
+                    <figure key={item.src}>
+                      <img src={item.src} alt={item.alt} loading="lazy" />
+                      <figcaption>{String(index + 1).padStart(2, "0")} / 05</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+
+              <section className="case-role dark-case-role fish-role">
+                <span>06 / Role</span>
+                <h2>Research & Visual Direction<br />Editorial & Motion Design</h2>
+                <div>
+                  <p>从田野调研、内容梳理到视觉系统与动态影像，完成项目整体视觉设计；提炼鱼灯造型、色彩与动作特征，建立主视觉、数字鱼灯与书籍叙事。</p>
+                  <p className="case-en">Field research, visual direction, key visual system, digital fish-lantern development, editorial design and motion storytelling.</p>
                 </div>
               </section>
             </article>
