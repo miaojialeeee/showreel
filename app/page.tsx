@@ -506,7 +506,7 @@ export default function Home() {
               <section className="less-highlights-section">
                 <div className="case-section-heading">
                   <span>01 / Selected Pages</span>
-                  <p>先以精选页面呈现品牌理念、影像语气与产品章节。保留足够的节奏与留白，不让五十页内容一次性压满纵向页面。</p>
+                  <p>以克制的版式、留白与影像节奏，呈现 LESS 26SS 的品牌气质与春夏叙事。</p>
                 </div>
                 <div className="less-highlight-grid">
                   {lessSelectedPages.map((item) => (
@@ -521,7 +521,7 @@ export default function Home() {
               <section className="less-full-book-section">
                 <div className="case-section-heading">
                   <span>02 / Complete Book</span>
-                  <p>完整 50 页保留在横向翻阅区。向右滑动即可连续阅读，手机端也可以直接手势浏览。</p>
+                  <p>从品牌理念、视觉语言到产品表达，完整展开 LESS 26SS 品牌手册的系统构建。</p>
                 </div>
                 <div className="less-book-gallery" aria-label="LESS 26SS 完整品牌册，横向滑动浏览" tabIndex={0}>
                   {lessBookPages.map((item) => (
