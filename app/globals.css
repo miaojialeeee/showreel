@@ -57,6 +57,8 @@ footer a { text-decoration: none; border-bottom: 1px solid; }
 .project-view > img { display: block; width: 100%; height: auto; min-height: 0; object-fit: contain; background: #000; }
 .project-view.garment-view { background: #e9e5da; color: #171717; }
 .garment-view .view-heading { border-bottom: 1px solid rgba(0,0,0,.25); }
+.project-view.out-service-view { background: #e7e9e8; color: #171a1a; }
+.out-service-view .view-heading { border-bottom: 1px solid rgba(0,0,0,.22); }
 .case-placeholder { padding: 80px 24px 120px; display: grid; grid-template-columns: 1fr 1.4fr 1.4fr; gap: 28px; font-size: 13px; line-height: 1.5; }
 .case-placeholder p { margin: 0; max-width: 52ch; }
 
@@ -90,6 +92,32 @@ footer a { text-decoration: none; border-bottom: 1px solid; }
 .case-role p { font-size: 14px; line-height: 1.7; }
 .case-role .case-en { margin-top: 28px; }
 
+.out-service-case { background: #e7e9e8; color: #171a1a; }
+.out-service-case .case-en { color: rgba(23,26,26,.55); }
+.out-service-intro h2 { font-size: clamp(29px, 4.4vw, 72px); }
+.out-service-intro .case-en h2 { font-size: clamp(24px, 3vw, 50px); }
+.out-service-case .case-section-heading p { color: rgba(23,26,26,.58); }
+.out-kv-section, .out-people-section, .out-films-section, .out-wechat-section, .out-bts-section, .out-event-film { padding: 90px 0 14vh; overflow: hidden; border-bottom: 1px solid rgba(0,0,0,.22); }
+.out-kv-pair { padding: 0 var(--case-pad); display: grid; grid-template-columns: minmax(0,1.7fr) minmax(220px,.65fr); gap: 12px; align-items: start; }
+.out-kv-pair img { display: block; width: 100%; height: auto; }
+.out-people-gallery, .out-bts-gallery { display: flex; gap: 12px; padding: 0 var(--case-pad) 22px; overflow-x: auto; overscroll-behavior-inline: contain; scroll-snap-type: x mandatory; scrollbar-color: rgba(0,0,0,.38) transparent; cursor: ew-resize; }
+.out-people-gallery figure, .out-bts-gallery figure { flex: 0 0 auto; margin: 0; scroll-snap-align: start; }
+.out-people-gallery img { display: block; width: auto; height: min(64vw, 780px); max-width: none; }
+.out-bts-gallery img { display: block; width: auto; height: min(56vw, 700px); max-width: none; }
+.out-people-gallery figcaption, .out-bts-gallery figcaption { padding-top: 10px; color: rgba(0,0,0,.5); font-size: 10px; }
+.out-film-grid { padding: 0 var(--case-pad); display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
+.out-film-grid figure { margin: 0; }
+.out-film-grid video { display: block; width: 100%; aspect-ratio: 9 / 16; background: #111; object-fit: contain; }
+.out-film-grid figcaption, .out-wechat-grid figcaption { padding: 12px 2px 0; display: flex; justify-content: space-between; color: rgba(0,0,0,.62); font-size: 11px; letter-spacing: .03em; text-transform: uppercase; }
+.out-film-grid figcaption span, .out-wechat-grid figcaption span { color: rgba(0,0,0,.42); text-transform: none; }
+.out-wechat-grid { padding: 0 var(--case-pad); display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
+.out-wechat-grid figure { margin: 0; display: flex; min-width: 0; flex-direction: column; }
+.out-wechat-grid figcaption { order: 1; padding: 0 2px 12px; }
+.wechat-scroll { order: 2; height: min(74vh,860px); overflow-y: auto; background: #f5f5f3; scrollbar-color: rgba(0,0,0,.32) transparent; overscroll-behavior: contain; }
+.wechat-scroll img { display: block; width: 100%; height: auto; }
+.out-event-film video { display: block; width: calc(100% - 2 * var(--case-pad)); max-height: 84vh; margin: 0 auto; background: #111; object-fit: contain; }
+.out-service-role { background: #dfe2e1; }
+
 @media (max-width: 760px) {
   .masthead { height: auto; min-height: 178px; grid-template-columns: 1fr auto; gap: 20px; }
   .identity { font-size: 34px; flex-direction: column; gap: 0; }
@@ -121,6 +149,15 @@ footer a { text-decoration: none; border-bottom: 1px solid; }
   .service-kv-gallery, .case-gallery { padding-right: 20vw; }
   .service-kv-gallery figure, .case-gallery figure { flex-basis: 76vw; }
   .case-role { min-height: auto; padding-top: 80px; padding-bottom: 90px; grid-template-columns: 1fr; }
+  .out-kv-section, .out-people-section, .out-films-section, .out-wechat-section, .out-bts-section, .out-event-film { padding-top: 62px; padding-bottom: 80px; }
+  .out-kv-pair { grid-template-columns: 1fr; padding: 0; gap: 8px; }
+  .out-kv-pair img:last-child { width: 78%; margin-left: auto; }
+  .out-people-gallery, .out-bts-gallery { padding-right: 20vw; }
+  .out-people-gallery img { height: min(68vh,620px); }
+  .out-bts-gallery img { height: min(58vh,540px); }
+  .out-film-grid, .out-wechat-grid { display: flex; gap: 10px; padding-right: 18vw; overflow-x: auto; overscroll-behavior-inline: contain; scroll-snap-type: x mandatory; }
+  .out-film-grid figure, .out-wechat-grid figure { flex: 0 0 76vw; scroll-snap-align: start; }
+  .out-event-film video { width: 100%; }
   .project-card { cursor: pointer; }
   .project-cursor { display: none; }
 }

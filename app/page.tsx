@@ -55,6 +55,32 @@ const garmentWorkshopServiceKVs = [
   { src: "/projects/garment-workshop/service-kv-04.jpg", alt: "甄选养护服务视觉" },
 ];
 
+const outOfServicePeople = [
+  { src: "/projects/out-of-service/person-jnby-vertical.jpg", alt: "JNBY 人物竖版视觉" },
+  { src: "/projects/out-of-service/person-jnby-horizontal.jpg", alt: "JNBY 人物横版视觉" },
+  { src: "/projects/out-of-service/person-less-vertical.jpg", alt: "LESS 人物竖版视觉" },
+  { src: "/projects/out-of-service/person-less-horizontal.jpg", alt: "LESS 人物横版视觉" },
+  { src: "/projects/out-of-service/person-croquis-vertical.jpg", alt: "速写 CROQUIS 人物竖版视觉" },
+  { src: "/projects/out-of-service/person-croquis-horizontal.jpg", alt: "速写 CROQUIS 人物横版视觉" },
+];
+
+const outOfServiceFilms = [
+  { label: "JNBY", src: "/projects/out-of-service/film-jnby.mp4", poster: "/projects/out-of-service/person-jnby-vertical.jpg" },
+  { label: "LESS", src: "/projects/out-of-service/film-less.mp4", poster: "/projects/out-of-service/person-less-vertical.jpg" },
+  { label: "CROQUIS", src: "/projects/out-of-service/film-croquis.mp4", poster: "/projects/out-of-service/person-croquis-vertical.jpg" },
+];
+
+const outOfServiceWechat = [
+  { label: "JNBY", src: "/projects/out-of-service/wechat-jnby.jpg" },
+  { label: "LESS", src: "/projects/out-of-service/wechat-less.jpg" },
+  { label: "CROQUIS", src: "/projects/out-of-service/wechat-croquis.jpg" },
+];
+
+const outOfServiceBts = Array.from({ length: 8 }, (_, index) => ({
+  src: `/projects/out-of-service/bts-${String(index + 1).padStart(2, "0")}.jpg`,
+  alt: `不在服务区现场花絮 ${index + 1}`,
+}));
+
 export default function Home() {
   const [activeProject, setActiveProject] = useState<Project | null>(null);
   const [activeCategory, setActiveCategory] = useState<(typeof categories)[number]["id"]>("all");
@@ -146,7 +172,7 @@ export default function Home() {
       </footer>
 
       {activeProject && (
-        <div className={`project-view ${activeProject.id === "01" ? "garment-view" : ""}`} role="dialog" aria-modal="true" aria-label={activeProject.title}>
+        <div className={`project-view ${activeProject.id === "01" ? "garment-view" : ""} ${activeProject.id === "02" ? "out-service-view" : ""}`} role="dialog" aria-modal="true" aria-label={activeProject.title}>
           <button className="close-view" onClick={() => setActiveProject(null)}>Close ×</button>
           <div className="view-heading">
             <span>Project {activeProject.id}</span>
@@ -155,7 +181,11 @@ export default function Home() {
             <span>{activeProject.year}</span>
           </div>
           <img
-            src={activeProject.id === "01" ? "/projects/garment-workshop/detail-cover.jpg" : activeProject.image}
+            src={activeProject.id === "01"
+              ? "/projects/garment-workshop/detail-cover.jpg"
+              : activeProject.id === "02"
+                ? "/projects/out-of-service/detail-cover.jpg"
+                : activeProject.image}
             alt={`${activeProject.title} 项目封面`}
           />
           {activeProject.id === "01" ? (
@@ -229,6 +259,117 @@ export default function Home() {
                 <div>
                   <p>负责项目整体视觉方向制定，梳理品牌服务定位与视觉表达体系；提炼维修、精洗、养护三大服务场景的核心视觉符号；完成 KV 画面创意策划与视觉设计，并参与短片内容策划与摄影风格统筹。</p>
                   <p className="case-en">Visual direction, key visual concept and design, brand film planning, photographic direction and visual consistency across the campaign.</p>
+                </div>
+              </section>
+            </article>
+          ) : activeProject.id === "02" ? (
+            <article className="case-study out-service-case">
+              <section className="case-intro out-service-intro">
+                <span className="case-index">Campaign / Overview</span>
+                <div>
+                  <h2>不在服务区，<br />进入自己的频道</h2>
+                  <p>在快节奏城市生活中，人们长期处于信息连接与工作压力之中。江南布衣以「不在服务区」为概念，邀请消费者暂时离开日常轨道，在喧嚣之外重新找回与自己的连接。</p>
+                </div>
+                <div className="case-en">
+                  <h2>Out of service.<br />Into your own frequency.</h2>
+                  <p>A winter campaign that disconnects from the noise of everyday life, moving between an office routine and an imagined snowbound world.</p>
+                </div>
+              </section>
+
+              <section className="out-kv-section">
+                <div className="case-section-heading">
+                  <span>01 / Group Key Visual</span>
+                  <p>将办公桌、文件与电话代表的日常秩序，与雪山、冰原和漂浮物构成的自由世界并置，建立现实与想象之间的超现实场域。</p>
+                </div>
+                <div className="out-kv-pair">
+                  <img src="/projects/out-of-service/detail-cover.jpg" alt="不在服务区横版合照主视觉" />
+                  <img src="/projects/out-of-service/kv-group-vertical.jpg" alt="不在服务区竖版合照主视觉" loading="lazy" />
+                </div>
+              </section>
+
+              <section className="out-people-section">
+                <div className="case-section-heading">
+                  <span>02 / Character Visuals</span>
+                  <p>为 JNBY、LESS 与速写 CROQUIS 建立统一的空间叙事，同时保留各品牌人物状态与服装语言的差异。</p>
+                </div>
+                <div className="out-people-gallery" aria-label="不在服务区人物平面，横向滑动浏览" tabIndex={0}>
+                  {outOfServicePeople.map((item, index) => (
+                    <figure key={item.src}>
+                      <img src={item.src} alt={item.alt} loading="lazy" />
+                      <figcaption>{String(index + 1).padStart(2, "0")} / 06</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+
+              <section className="out-films-section">
+                <div className="case-section-heading">
+                  <span>03 / Brand Films</span>
+                  <p>三支竖屏短片延续“断开连接”的核心动作，以人物、办公物件与雪域空间之间的转换呈现不同品牌频道。</p>
+                </div>
+                <div className="out-film-grid">
+                  {outOfServiceFilms.map((film) => (
+                    <figure key={film.src}>
+                      <video controls playsInline preload="none" poster={film.poster}>
+                        <source src={film.src} type="video/mp4" />
+                      </video>
+                      <figcaption>{film.label} <span>点击观看 ↓︎</span></figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+
+              <section className="out-wechat-section">
+                <div className="case-section-heading">
+                  <span>04 / WeChat Editorial</span>
+                  <p>三条品牌线的公众号长图延展。每个窗口均可单独向下滚动，查看完整传播内容。</p>
+                </div>
+                <div className="out-wechat-grid" aria-label="公众号长图，左右滑动并在窗口内向下浏览">
+                  {outOfServiceWechat.map((item) => (
+                    <figure key={item.src}>
+                      <figcaption>{item.label} <span>Scroll ↓︎</span></figcaption>
+                      <div className="wechat-scroll" tabIndex={0}>
+                        <img src={item.src} alt={`${item.label} 公众号长图`} loading="lazy" />
+                      </div>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+
+              <section className="out-bts-section">
+                <div className="case-section-heading">
+                  <span>05 / Behind the Scenes</span>
+                  <p>从道具装置、现场陈列到观众动线，记录「不在服务区」从影像概念延伸至线下空间的过程。</p>
+                </div>
+                <div className="out-bts-gallery" aria-label="不在服务区现场花絮，横向滑动浏览" tabIndex={0}>
+                  {outOfServiceBts.map((item, index) => (
+                    <figure key={item.src}>
+                      <img src={item.src} alt={item.alt} loading="lazy" />
+                      <figcaption>{String(index + 1).padStart(2, "0")} / 08</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+
+              <section className="out-event-film">
+                <div className="case-section-heading">
+                  <span>06 / On-site Film</span>
+                  <div className="film-copy">
+                    <p>现场视频完整呈现空间、装置与人群的互动关系。</p>
+                    <span className="film-cta">点击观看现场视频 ↓︎</span>
+                  </div>
+                </div>
+                <video controls playsInline preload="none" poster="/projects/out-of-service/bts-04.jpg">
+                  <source src="/projects/out-of-service/event-film.mp4" type="video/mp4" />
+                </video>
+              </section>
+
+              <section className="case-role out-service-role">
+                <span>07 / Role</span>
+                <h2>Campaign Visual Direction<br />Key Visual & Film Planning</h2>
+                <div>
+                  <p>负责羽绒系列 Campaign 的整体视觉创意与设计执行：参与主题概念提炼与视觉方向探索；建立「不在服务区」的超现实视觉语言；完成 KV 画面创意、构图与视觉呈现；参与短片视觉策划，并统筹 JNBY、LESS 与速写 CROQUIS 三条品牌线的统一与差异化表达。</p>
+                  <p className="case-en">Campaign visual direction, key visual concept and design, film planning, and a unified visual system across JNBY, LESS and CROQUIS.</p>
                 </div>
               </section>
             </article>
