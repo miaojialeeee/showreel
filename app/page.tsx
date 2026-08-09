@@ -186,12 +186,14 @@ export default function Home() {
             <p>{activeProject.english}</p>
             <span>{activeProject.year}</span>
           </div>
-          {activeProject.id !== "02" && (
-            <img
-              src={activeProject.id === "01" ? "/projects/garment-workshop/detail-cover.jpg" : activeProject.image}
-              alt={`${activeProject.title} 项目封面`}
-            />
-          )}
+          <img
+            src={activeProject.id === "01"
+              ? "/projects/garment-workshop/detail-cover.jpg"
+              : activeProject.id === "02"
+                ? "/projects/out-of-service/detail-cover.jpg"
+                : activeProject.image}
+            alt={`${activeProject.title} 项目封面`}
+          />
           {activeProject.id === "01" ? (
             <article className="case-study garment-case">
               <section className="case-intro">
