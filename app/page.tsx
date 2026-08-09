@@ -56,18 +56,24 @@ const garmentWorkshopServiceKVs = [
 ];
 
 const outOfServicePeople = [
-  { src: "/projects/out-of-service/person-jnby-vertical.jpg", alt: "JNBY 人物竖版视觉" },
-  { src: "/projects/out-of-service/person-jnby-horizontal.jpg", alt: "JNBY 人物横版视觉" },
-  { src: "/projects/out-of-service/person-less-vertical.jpg", alt: "LESS 人物竖版视觉" },
-  { src: "/projects/out-of-service/person-less-horizontal.jpg", alt: "LESS 人物横版视觉" },
-  { src: "/projects/out-of-service/person-croquis-vertical.jpg", alt: "速写 CROQUIS 人物竖版视觉" },
-  { src: "/projects/out-of-service/person-croquis-horizontal.jpg", alt: "速写 CROQUIS 人物横版视觉" },
+  { src: "/projects/out-of-service/person-jnby.jpg", alt: "JNBY 人物平面视觉" },
+  { src: "/projects/out-of-service/person-less.jpg", alt: "LESS 人物平面视觉" },
+  { src: "/projects/out-of-service/person-croquis.jpg", alt: "速写 CROQUIS 人物平面视觉" },
 ];
 
 const outOfServiceFilms = [
-  { label: "JNBY", src: "/projects/out-of-service/film-jnby.mp4", poster: "/projects/out-of-service/person-jnby-vertical.jpg" },
-  { label: "LESS", src: "/projects/out-of-service/film-less.mp4", poster: "/projects/out-of-service/person-less-vertical.jpg" },
-  { label: "CROQUIS", src: "/projects/out-of-service/film-croquis.mp4", poster: "/projects/out-of-service/person-croquis-vertical.jpg" },
+  { label: "JNBY", src: "/projects/out-of-service/film-jnby.mp4", poster: "/projects/out-of-service/person-jnby.jpg" },
+  { label: "LESS", src: "/projects/out-of-service/film-less.mp4", poster: "/projects/out-of-service/person-less.jpg" },
+  { label: "CROQUIS", src: "/projects/out-of-service/film-croquis.mp4", poster: "/projects/out-of-service/person-croquis.jpg" },
+];
+
+const outOfServiceLookbook = [
+  { src: "/projects/out-of-service/lookbook-jnby-01.jpg", alt: "JNBY Lookbook 01" },
+  { src: "/projects/out-of-service/lookbook-jnby-02.jpg", alt: "JNBY Lookbook 02" },
+  { src: "/projects/out-of-service/lookbook-less-01.jpg", alt: "LESS Lookbook 01" },
+  { src: "/projects/out-of-service/lookbook-less-02.jpg", alt: "LESS Lookbook 02" },
+  { src: "/projects/out-of-service/lookbook-croquis-01.jpg", alt: "速写 CROQUIS Lookbook 01" },
+  { src: "/projects/out-of-service/lookbook-croquis-02.jpg", alt: "速写 CROQUIS Lookbook 02" },
 ];
 
 const outOfServiceWechat = [
@@ -180,14 +186,12 @@ export default function Home() {
             <p>{activeProject.english}</p>
             <span>{activeProject.year}</span>
           </div>
-          <img
-            src={activeProject.id === "01"
-              ? "/projects/garment-workshop/detail-cover.jpg"
-              : activeProject.id === "02"
-                ? "/projects/out-of-service/detail-cover.jpg"
-                : activeProject.image}
-            alt={`${activeProject.title} 项目封面`}
-          />
+          {activeProject.id !== "02" && (
+            <img
+              src={activeProject.id === "01" ? "/projects/garment-workshop/detail-cover.jpg" : activeProject.image}
+              alt={`${activeProject.title} 项目封面`}
+            />
+          )}
           {activeProject.id === "01" ? (
             <article className="case-study garment-case">
               <section className="case-intro">
@@ -281,8 +285,7 @@ export default function Home() {
                   <span>01 / Group Key Visual</span>
                   <p>将办公桌、文件与电话代表的日常秩序，与雪山、冰原和漂浮物构成的自由世界并置，建立现实与想象之间的超现实场域。</p>
                 </div>
-                <div className="out-kv-pair">
-                  <img src="/projects/out-of-service/detail-cover.jpg" alt="不在服务区横版合照主视觉" />
+                <div className="out-kv-single">
                   <img src="/projects/out-of-service/kv-group-vertical.jpg" alt="不在服务区竖版合照主视觉" loading="lazy" />
                 </div>
               </section>
@@ -296,6 +299,21 @@ export default function Home() {
                   {outOfServicePeople.map((item, index) => (
                     <figure key={item.src}>
                       <img src={item.src} alt={item.alt} loading="lazy" />
+                      <figcaption>{String(index + 1).padStart(2, "0")} / 03</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+
+              <section className="out-lookbook-section">
+                <div className="case-section-heading">
+                  <span>03 / Lookbook</span>
+                  <p>以更贴近人物状态的镜头补充 Campaign 叙事，呈现三条品牌线在同一场景中的不同着装语言。</p>
+                </div>
+                <div className="out-lookbook-gallery" aria-label="不在服务区 Lookbook，横向滑动浏览" tabIndex={0}>
+                  {outOfServiceLookbook.map((item, index) => (
+                    <figure key={item.src}>
+                      <img src={item.src} alt={item.alt} loading="lazy" />
                       <figcaption>{String(index + 1).padStart(2, "0")} / 06</figcaption>
                     </figure>
                   ))}
@@ -304,16 +322,16 @@ export default function Home() {
 
               <section className="out-films-section">
                 <div className="case-section-heading">
-                  <span>03 / Brand Films</span>
+                  <span>04 / Brand Films</span>
                   <p>三支竖屏短片延续“断开连接”的核心动作，以人物、办公物件与雪域空间之间的转换呈现不同品牌频道。</p>
                 </div>
                 <div className="out-film-grid">
                   {outOfServiceFilms.map((film) => (
                     <figure key={film.src}>
+                      <figcaption>{film.label} <span>点击观看 ↓︎</span></figcaption>
                       <video controls playsInline preload="none" poster={film.poster}>
                         <source src={film.src} type="video/mp4" />
                       </video>
-                      <figcaption>{film.label} <span>点击观看 ↓︎</span></figcaption>
                     </figure>
                   ))}
                 </div>
@@ -321,7 +339,7 @@ export default function Home() {
 
               <section className="out-wechat-section">
                 <div className="case-section-heading">
-                  <span>04 / WeChat Editorial</span>
+                  <span>05 / WeChat Editorial</span>
                   <p>三条品牌线的公众号长图延展。每个窗口均可单独向下滚动，查看完整传播内容。</p>
                 </div>
                 <div className="out-wechat-grid" aria-label="公众号长图，左右滑动并在窗口内向下浏览">
@@ -338,7 +356,7 @@ export default function Home() {
 
               <section className="out-bts-section">
                 <div className="case-section-heading">
-                  <span>05 / Behind the Scenes</span>
+                  <span>06 / Behind the Scenes</span>
                   <p>从道具装置、现场陈列到观众动线，记录「不在服务区」从影像概念延伸至线下空间的过程。</p>
                 </div>
                 <div className="out-bts-gallery" aria-label="不在服务区现场花絮，横向滑动浏览" tabIndex={0}>
@@ -353,7 +371,7 @@ export default function Home() {
 
               <section className="out-event-film">
                 <div className="case-section-heading">
-                  <span>06 / On-site Film</span>
+                  <span>07 / On-site Film</span>
                   <div className="film-copy">
                     <p>现场视频完整呈现空间、装置与人群的互动关系。</p>
                     <span className="film-cta">点击观看现场视频 ↓︎</span>
@@ -365,7 +383,7 @@ export default function Home() {
               </section>
 
               <section className="case-role out-service-role">
-                <span>07 / Role</span>
+                <span>08 / Role</span>
                 <h2>Campaign Visual Direction<br />Key Visual & Film Planning</h2>
                 <div>
                   <p>负责羽绒系列 Campaign 的整体视觉创意与设计执行：参与主题概念提炼与视觉方向探索；建立「不在服务区」的超现实视觉语言；完成 KV 画面创意、构图与视觉呈现；参与短片视觉策划，并统筹 JNBY、LESS 与速写 CROQUIS 三条品牌线的统一与差异化表达。</p>
