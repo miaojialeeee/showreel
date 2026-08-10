@@ -103,6 +103,32 @@ const rereSummerImages = Array.from({ length: 6 }, (_, index) => ({
   alt: `RERERELAB 边走边看夏季平面 ${index + 1}`,
 }));
 
+const evanKeyVisuals = Array.from({ length: 5 }, (_, index) => ({
+  src: `/projects/proya-evan/kv/kv-${String(index + 1).padStart(2, "0")}.jpg`,
+  alt: `珀莱雅 EVAN 520 艺人主视觉 ${index + 1}`,
+}));
+
+const evanSingleFilms = [
+  { label: "GIFT", src: "/projects/proya-evan/tvc-01.m4v" },
+  { label: "CUSHION", src: "/projects/proya-evan/tvc-02.m4v" },
+  { label: "SUNSCREEN", src: "/projects/proya-evan/tvc-03.m4v" },
+];
+
+const evanPrintImages = Array.from({ length: 8 }, (_, index) => ({
+  src: `/projects/proya-evan/print/print-${String(index + 1).padStart(2, "0")}.jpg`,
+  alt: `珀莱雅 EVAN 520 平面摄影 ${index + 1}`,
+}));
+
+const evanProductCombos = Array.from({ length: 3 }, (_, index) => ({
+  src: `/projects/proya-evan/products/combo-${String(index + 1).padStart(2, "0")}.jpg`,
+  alt: `珀莱雅 EVAN 520 产品组合图 ${index + 1}`,
+}));
+
+const evanProductDetails = Array.from({ length: 6 }, (_, index) => ({
+  src: `/projects/proya-evan/products/product-${String(index + 1).padStart(2, "0")}.jpg`,
+  alt: `珀莱雅 EVAN 520 产品细节 ${index + 1}`,
+}));
+
 const lessBookPages = Array.from({ length: 50 }, (_, index) => ({
   src: `/projects/less-brandbook/pages/page-${String(index + 1).padStart(2, "0")}.jpg`,
   page: index + 1,
@@ -237,7 +263,7 @@ export default function Home() {
       </footer>
 
       {activeProject && (
-        <div className={`project-view ${activeProject.id === "01" ? "garment-view" : ""} ${activeProject.id === "02" ? "out-service-view" : ""} ${activeProject.id === "03" ? "rere-view" : ""} ${activeProject.id === "07" ? "croquis-view" : ""} ${activeProject.id === "08" ? "less-book-view" : ""} ${activeProject.id === "12" ? "fish-view" : ""}`} role="dialog" aria-modal="true" aria-label={activeProject.title}>
+        <div className={`project-view ${activeProject.id === "01" ? "garment-view" : ""} ${activeProject.id === "02" ? "out-service-view" : ""} ${activeProject.id === "03" ? "rere-view" : ""} ${activeProject.id === "05" ? "evan-view" : ""} ${activeProject.id === "07" ? "croquis-view" : ""} ${activeProject.id === "08" ? "less-book-view" : ""} ${activeProject.id === "12" ? "fish-view" : ""}`} role="dialog" aria-modal="true" aria-label={activeProject.title}>
           <button className="close-view" onClick={() => setActiveProject(null)}>Close ×</button>
           <div className="view-heading">
             <span>Project {activeProject.id}</span>
@@ -252,6 +278,8 @@ export default function Home() {
                 ? "/projects/out-of-service/detail-cover.jpg"
                 : activeProject.id === "03"
                   ? "/projects/rererelab-walk-see/cover.jpg"
+                  : activeProject.id === "05"
+                    ? "/projects/proya-evan/kv-main.jpg"
                   : activeProject.id === "07"
                     ? "/projects/croquis-ss26/cover.jpg"
                   : activeProject.id === "08"
@@ -536,6 +564,118 @@ export default function Home() {
                 <div>
                   <p>负责 RERERELAB C5 系列大片的视觉创意与设计执行：参与「边走边看」概念梳理与视觉方向制定；建立符合品牌年轻化定位的影像语言；参与 KV 构思、构图规划与视觉呈现，并统筹系列视觉资产输出。</p>
                   <p className="case-en">Campaign concept development, visual direction, key visual composition and a consistent image system across the series.</p>
+                </div>
+              </section>
+            </article>
+          ) : activeProject.id === "05" ? (
+            <article className="case-study evan-case">
+              <section className="case-intro evan-intro">
+                <span className="case-index">520 Campaign / Overview</span>
+                <div>
+                  <h2>破晓成「羲」，<br />逐光而行</h2>
+                  <p>520 作为表达爱意的重要节点，消费者对节日礼赠的需求正从产品购买转向情感价值与仪式感体验。珀莱雅携手 EVAN 李羲承，以「光感、陪伴、心意传递」为视觉核心，让护肤礼赠成为记录美好瞬间的情感载体。</p>
+                </div>
+                <div className="case-en">
+                  <h2>Follow the light.<br />Embrace the moment.</h2>
+                  <p>A romantic 520 campaign where luminous texture, soft colour and a sense of companionship turn skincare gifting into a gesture of warmth and connection.</p>
+                </div>
+              </section>
+
+              <section className="evan-kv-section">
+                <div className="case-section-heading">
+                  <span>01 / Artist Key Visuals</span>
+                  <p>以柔和粉色渐变、清透光感和轻盈材质建立节日氛围，并在礼袋、气垫与防晒系列之间保持统一的艺人视觉语言。</p>
+                </div>
+                <div className="evan-kv-grid">
+                  {evanKeyVisuals.map((item, index) => (
+                    <figure key={item.src}>
+                      <img src={item.src} alt={item.alt} loading="lazy" />
+                      <figcaption>Key Visual · {String(index + 1).padStart(2, "0")}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+
+              <section className="evan-tvc-section">
+                <div className="case-section-heading">
+                  <span>02 / 520 TVC</span>
+                  <div className="film-copy">
+                    <p>以光线和礼物作为叙事线索，从完整成片延展至礼袋、气垫与防晒三条产品短片。</p>
+                    <span className="film-cta">点击观看 520 TVC ↓︎</span>
+                  </div>
+                </div>
+                <video className="evan-main-film" controls playsInline preload="none" poster="/projects/proya-evan/kv-main.jpg">
+                  <source src="/projects/proya-evan/tvc-main.m4v" type="video/mp4" />
+                </video>
+                <div className="evan-single-films">
+                  {evanSingleFilms.map((film, index) => (
+                    <figure key={film.src}>
+                      <figcaption>{String(index + 1).padStart(2, "0")} / {film.label} <span>点击观看 ↓︎</span></figcaption>
+                      <video controls playsInline preload="none" poster={evanPrintImages[index].src}>
+                        <source src={film.src} type="video/mp4" />
+                      </video>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+
+              <section className="evan-print-section">
+                <div className="case-section-heading">
+                  <span>03 / Print</span>
+                  <p>围绕人物、礼物与产品细节展开平面摄影，在清透肤感、柔软织物与粉色光晕之间保留足够呼吸感。</p>
+                </div>
+                <div className="evan-print-grid">
+                  {evanPrintImages.map((item, index) => (
+                    <figure key={item.src}>
+                      <img src={item.src} alt={item.alt} loading="lazy" />
+                      <figcaption>Print · {String(index + 1).padStart(2, "0")}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+
+              <section className="evan-product-section">
+                <div className="case-section-heading">
+                  <span>04 / Product Combinations</span>
+                  <p>重点呈现三组礼盒组合，以包装、配件与产品之间的比例关系建立完整的 520 礼赠体验。</p>
+                </div>
+                <div className="evan-combo-grid">
+                  {evanProductCombos.map((item, index) => (
+                    <figure key={item.src}>
+                      <img src={item.src} alt={item.alt} loading="lazy" />
+                      <figcaption>Combination · {String(index + 1).padStart(2, "0")}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+                <div className="evan-product-scroll" aria-label="珀莱雅 EVAN 产品细节，横向滑动浏览" tabIndex={0}>
+                  {evanProductDetails.map((item, index) => (
+                    <figure key={item.src}>
+                      <img src={item.src} alt={item.alt} loading="lazy" />
+                      <figcaption>Detail · {String(index + 1).padStart(2, "0")}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+
+              <section className="evan-unboxing-section">
+                <div className="case-section-heading">
+                  <span>05 / Unboxing Film</span>
+                  <div className="film-copy">
+                    <p>以开箱过程收束项目，完整呈现礼盒层次、产品组合与节日仪式感。</p>
+                    <span className="film-cta">点击观看开箱视频 ↓︎</span>
+                  </div>
+                </div>
+                <video controls playsInline preload="none" poster="/projects/proya-evan/products/combo-01.jpg">
+                  <source src="/projects/proya-evan/unboxing.m4v" type="video/mp4" />
+                </video>
+              </section>
+
+              <section className="case-role evan-role">
+                <span>06 / Role</span>
+                <h2>Campaign Visual Design<br />KV & Content Planning</h2>
+                <div>
+                  <p>参与 520 礼赠项目的视觉方向梳理与设计执行；围绕艺人 KV、TVC、平面摄影与产品组合建立统一的粉色光感系统，并统筹多触点传播内容的视觉一致性。</p>
+                  <p className="case-en">Campaign visual design, artist key visuals, film and content planning, image direction and a consistent visual system across gifting touchpoints.</p>
                 </div>
               </section>
             </article>
