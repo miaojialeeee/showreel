@@ -103,6 +103,25 @@ const rereSummerImages = Array.from({ length: 6 }, (_, index) => ({
   alt: `RERERELAB 边走边看夏季平面 ${index + 1}`,
 }));
 
+const pinguSocialFilms = [
+  { label: "PREVIEW", src: "/projects/proya-pingu/social-01.m4v", poster: "/projects/proya-pingu/social-posters/poster-01.jpg" },
+  { label: "EPISODE 01", src: "/projects/proya-pingu/social-02.m4v", poster: "/projects/proya-pingu/social-posters/poster-02.jpg" },
+  { label: "EPISODE 02", src: "/projects/proya-pingu/social-03.m4v", poster: "/projects/proya-pingu/social-posters/poster-03.jpg" },
+];
+
+const pinguSceneImages = Array.from({ length: 5 }, (_, index) => ({
+  src: `/projects/proya-pingu/scenes/scene-${String(index + 1).padStart(2, "0")}.jpg`,
+  alt: `珀莱雅 Pingu 七夕礼盒场景图 ${index + 1}`,
+}));
+
+const pinguSocialContent = [
+  { label: "快闪官宣 01", src: "/projects/proya-pingu/social-content/flash-01.jpg" },
+  { label: "快闪官宣 02", src: "/projects/proya-pingu/social-content/flash-02.jpg" },
+  { label: "快闪官宣 03", src: "/projects/proya-pingu/social-content/flash-03.jpg" },
+  { label: "一日店长", src: "/projects/proya-pingu/social-content/manager.jpg" },
+  { label: "UGC 征集", src: "/projects/proya-pingu/social-content/ugc.jpg" },
+];
+
 const evanKeyVisuals = Array.from({ length: 5 }, (_, index) => ({
   src: `/projects/proya-evan/kv/kv-${String(index + 1).padStart(2, "0")}.jpg`,
   alt: `珀莱雅 EVAN 520 艺人主视觉 ${index + 1}`,
@@ -127,6 +146,16 @@ const evanProductCombos = Array.from({ length: 3 }, (_, index) => ({
 const evanProductDetails = Array.from({ length: 6 }, (_, index) => ({
   src: `/projects/proya-evan/products/product-${String(index + 1).padStart(2, "0")}.jpg`,
   alt: `珀莱雅 EVAN 520 产品细节 ${index + 1}`,
+}));
+
+const xiaoranKeyVisuals = Array.from({ length: 3 }, (_, index) => ({
+  src: `/projects/proya-xiaoran/kv/kv-${String(index + 1).padStart(2, "0")}.jpg`,
+  alt: `珀莱雅李小冉红宝石系列主视觉 ${index + 1}`,
+}));
+
+const xiaoranPrintImages = Array.from({ length: 4 }, (_, index) => ({
+  src: `/projects/proya-xiaoran/print/print-${String(index + 1).padStart(2, "0")}.jpg`,
+  alt: `珀莱雅李小冉红宝石系列平面摄影 ${index + 1}`,
 }));
 
 const lessBookPages = Array.from({ length: 50 }, (_, index) => ({
@@ -263,7 +292,7 @@ export default function Home() {
       </footer>
 
       {activeProject && (
-        <div className={`project-view ${activeProject.id === "01" ? "garment-view" : ""} ${activeProject.id === "02" ? "out-service-view" : ""} ${activeProject.id === "03" ? "rere-view" : ""} ${activeProject.id === "05" ? "evan-view" : ""} ${activeProject.id === "07" ? "croquis-view" : ""} ${activeProject.id === "08" ? "less-book-view" : ""} ${activeProject.id === "12" ? "fish-view" : ""}`} role="dialog" aria-modal="true" aria-label={activeProject.title}>
+        <div className={`project-view ${activeProject.id === "01" ? "garment-view" : ""} ${activeProject.id === "02" ? "out-service-view" : ""} ${activeProject.id === "03" ? "rere-view" : ""} ${activeProject.id === "04" ? "pingu-view" : ""} ${activeProject.id === "05" ? "evan-view" : ""} ${activeProject.id === "06" ? "xiaoran-view" : ""} ${activeProject.id === "07" ? "croquis-view" : ""} ${activeProject.id === "08" ? "less-book-view" : ""} ${activeProject.id === "12" ? "fish-view" : ""}`} role="dialog" aria-modal="true" aria-label={activeProject.title}>
           <button className="close-view" onClick={() => setActiveProject(null)}>Close ×</button>
           <div className="view-heading">
             <span>Project {activeProject.id}</span>
@@ -278,8 +307,12 @@ export default function Home() {
                 ? "/projects/out-of-service/detail-cover.jpg"
                 : activeProject.id === "03"
                   ? "/projects/rererelab-walk-see/cover.jpg"
+                  : activeProject.id === "04"
+                    ? "/projects/proya-pingu/detail-cover.jpg"
                   : activeProject.id === "05"
                     ? "/projects/proya-evan/kv-main.jpg"
+                  : activeProject.id === "06"
+                    ? "/projects/05-proya-xiaoran.jpg"
                   : activeProject.id === "07"
                     ? "/projects/croquis-ss26/cover.jpg"
                   : activeProject.id === "08"
@@ -567,6 +600,100 @@ export default function Home() {
                 </div>
               </section>
             </article>
+          ) : activeProject.id === "04" ? (
+            <article className="case-study pingu-case">
+              <section className="case-intro pingu-intro">
+                <span className="case-index">Qixi Campaign / Overview</span>
+                <div>
+                  <h2>爱在朝夕，<br />心动同 Pin</h2>
+                  <p>珀莱雅携手 Pingu，以七夕限定礼盒为核心，将角色的幽默、亲密关系与礼赠仪式感转化为一套轻快的视觉叙事。</p>
+                </div>
+                <div className="case-en">
+                  <h2>A little closer.<br />A little more in sync.</h2>
+                  <p>A playful Qixi collaboration where Pingu turns gifting, companionship and everyday affection into a bright, character-led visual story.</p>
+                </div>
+              </section>
+
+              <section className="pingu-kv-section">
+                <div className="case-section-heading">
+                  <span>01 / Key Visual</span>
+                  <p>以浅蓝场景、红粉礼盒与 Pingu 角色动作建立清晰的七夕识别，让产品、角色与节日信息在同一画面中轻快相遇。</p>
+                </div>
+                <img className="pingu-main-kv" src="/projects/proya-pingu/detail-cover.jpg" alt="珀莱雅 Pingu 七夕联名主视觉" loading="lazy" />
+              </section>
+
+              <section className="pingu-social-film-section">
+                <div className="case-section-heading">
+                  <span>02 / Social Video</span>
+                  <div className="film-copy">
+                    <p>从预告到两支正片，以 Pingu 的日常动作与关系互动延展礼盒故事，形成适合社交传播的轻量内容节奏。</p>
+                    <span className="film-cta">点击观看 Social Video ↓︎</span>
+                  </div>
+                </div>
+                <div className="pingu-social-films">
+                  {pinguSocialFilms.map((film, index) => (
+                    <figure key={film.src}>
+                      <figcaption>{String(index + 1).padStart(2, "0")} / {film.label} <span>点击观看 ↓︎</span></figcaption>
+                      <video controls playsInline preload="none" poster={film.poster}>
+                        <source src={film.src} type="video/mp4" />
+                      </video>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+
+              <section className="pingu-scenes-section">
+                <div className="case-section-heading">
+                  <span>03 / Product Scenes</span>
+                  <p>围绕礼盒、礼袋与联名配件搭建蓝色微缩场景，以柔和材质和角色化细节补充开箱前后的想象。</p>
+                </div>
+                <div className="pingu-scene-grid">
+                  {pinguSceneImages.map((item, index) => (
+                    <figure key={item.src}>
+                      <img src={item.src} alt={item.alt} loading="lazy" />
+                      <figcaption>Scene · {String(index + 1).padStart(2, "0")}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+
+              <section className="pingu-unbox-section">
+                <div className="case-section-heading">
+                  <span>04 / Unboxing Film</span>
+                  <div className="film-copy">
+                    <p>以横屏开箱内容完整呈现礼盒结构、联名细节与产品组合，让包装体验成为七夕礼赠叙事的收束。</p>
+                    <span className="film-cta">点击观看开箱视频 ↓︎</span>
+                  </div>
+                </div>
+                <video controls playsInline preload="none" poster="/projects/proya-pingu/unboxing-poster.jpg">
+                  <source src="/projects/proya-pingu/unboxing.m4v" type="video/mp4" />
+                </video>
+              </section>
+
+              <section className="pingu-social-content-section">
+                <div className="case-section-heading">
+                  <span>05 / Social Content</span>
+                  <p>精选快闪官宣、一日店长与 UGC 征集三类内容，以较轻的横向浏览呈现完整传播触点。</p>
+                </div>
+                <div className="pingu-social-content" aria-label="珀莱雅 Pingu 自媒体内容，横向滑动浏览" tabIndex={0}>
+                  {pinguSocialContent.map((item, index) => (
+                    <figure key={item.src}>
+                      <img src={item.src} alt={`珀莱雅 Pingu ${item.label}`} loading="lazy" />
+                      <figcaption>{String(index + 1).padStart(2, "0")} / {item.label}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+
+              <section className="case-role pingu-role">
+                <span>06 / Role</span>
+                <h2>Campaign Visual Design<br />KV & Social Content</h2>
+                <div>
+                  <p>围绕联名礼盒梳理七夕视觉方向，参与主视觉、社交视频、产品场景与自媒体内容的设计延展，并保持角色调性、产品信息与多触点传播的一致性。</p>
+                  <p className="case-en">Campaign visual design, key visual, social films, product scenes and a consistent character-led system across social touchpoints.</p>
+                </div>
+              </section>
+            </article>
           ) : activeProject.id === "05" ? (
             <article className="case-study evan-case">
               <section className="case-intro evan-intro">
@@ -676,6 +803,72 @@ export default function Home() {
                 <div>
                   <p>参与 520 礼赠项目的视觉方向梳理与设计执行；围绕艺人 KV、TVC、平面摄影与产品组合建立统一的粉色光感系统，并统筹多触点传播内容的视觉一致性。</p>
                   <p className="case-en">Campaign visual design, artist key visuals, film and content planning, image direction and a consistent visual system across gifting touchpoints.</p>
+                </div>
+              </section>
+            </article>
+          ) : activeProject.id === "06" ? (
+            <article className="case-study xiaoran-case">
+              <section className="case-intro xiaoran-intro">
+                <span className="case-index">Ruby Campaign / Overview</span>
+                <div>
+                  <h2>红宝石时光，<br />撑起肌肤韧性</h2>
+                  <p>围绕珀莱雅红宝石系列与品牌时光大使李小冉，建立由冷调浅蓝、红宝石光泽与银色产品质感构成的视觉系统，在人物状态、产品特写与动态影像之间保持统一。</p>
+                </div>
+                <div className="case-en">
+                  <h2>Ruby resilience,<br />captured in light.</h2>
+                  <p>A refined campaign where cool blue light, ruby-red product accents and luminous skin create one cohesive image system across film and photography.</p>
+                </div>
+              </section>
+
+              <section className="xiaoran-kv-section">
+                <div className="case-section-heading">
+                  <span>01 / Artist Key Visuals</span>
+                  <p>以冷调浅蓝托起人物肤感，用高饱和红宝石产品形成视觉锚点，统一代言人、产品与品牌信息。</p>
+                </div>
+                <div className="xiaoran-kv-grid">
+                  {xiaoranKeyVisuals.map((item, index) => (
+                    <figure key={item.src}>
+                      <img src={item.src} alt={item.alt} loading="lazy" />
+                      <figcaption>Key Visual · {String(index + 1).padStart(2, "0")}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+
+              <section className="xiaoran-film-section">
+                <div className="case-section-heading">
+                  <span>02 / Campaign Film</span>
+                  <div className="film-copy">
+                    <p>以人物状态与产品质感交替推进，在轻盈节奏中呈现红宝石系列的紧致、韧性与光泽感。</p>
+                    <span className="film-cta">点击观看珀莱雅 × 李小冉 TVC ↓︎</span>
+                  </div>
+                </div>
+                <video controls playsInline preload="none" poster="/projects/proya-xiaoran/kv/kv-03.jpg">
+                  <source src="/projects/proya-xiaoran/film.m4v" type="video/mp4" />
+                </video>
+              </section>
+
+              <section className="xiaoran-print-section">
+                <div className="case-section-heading">
+                  <span>03 / Print</span>
+                  <p>从人物近景、手持产品到系列合影，保留清透肤感与克制构图，让产品红色成为画面中的持续线索。</p>
+                </div>
+                <div className="xiaoran-print-grid">
+                  {xiaoranPrintImages.map((item, index) => (
+                    <figure key={item.src}>
+                      <img src={item.src} alt={item.alt} loading="lazy" />
+                      <figcaption>Print · {String(index + 1).padStart(2, "0")}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+
+              <section className="case-role xiaoran-role">
+                <span>04 / Role</span>
+                <h2>Campaign Visual Design<br />KV & Content Planning</h2>
+                <div>
+                  <p>围绕红宝石系列梳理整体视觉方向，参与艺人主视觉、TVC 与平面摄影的内容规划与设计延展，在不同媒介中保持色彩、光感与产品质感的统一。</p>
+                  <p className="case-en">Campaign visual design, artist key visuals, film and image planning, with a consistent ruby-led palette across every touchpoint.</p>
                 </div>
               </section>
             </article>
