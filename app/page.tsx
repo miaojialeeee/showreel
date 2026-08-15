@@ -158,6 +158,30 @@ const xiaoranPrintImages = Array.from({ length: 4 }, (_, index) => ({
   alt: `珀莱雅李小冉红宝石系列平面摄影 ${index + 1}`,
 }));
 
+const reuseQucuImages = Array.from({ length: 10 }, (_, index) => ({
+  src: `/projects/jnby-reuse/qucu/qucu-${String(index + 1).padStart(2, "0")}.jpg`,
+  alt: `布尽其用曲措篇影像 ${index + 1}`,
+}));
+
+const reuseSuitianmeiImages = Array.from({ length: 9 }, (_, index) => ({
+  src: `/projects/jnby-reuse/suitianmei/suitianmei-${String(index + 1).padStart(2, "0")}.jpg`,
+  alt: `布尽其用粟田梅篇影像 ${index + 1}`,
+}));
+
+const giftBoxSeries = [
+  { title: "七夕礼盒", english: "Qixi Gift Set", prefix: "qixi", count: 4 },
+  { title: "能量礼盒", english: "Energy Gift Set", prefix: "energy", count: 2 },
+  { title: "蕴白礼盒", english: "Brightening Gift Set", prefix: "white", count: 3 },
+  { title: "韩男礼袋", english: "Men's Gift Bag", prefix: "men", count: 2 },
+  { title: "京东节日礼盒", english: "JD Festival Gift Set", prefix: "jd", count: 3 },
+].map((series) => ({
+  ...series,
+  images: Array.from({ length: series.count }, (_, index) => ({
+    src: `/projects/giftbox-collection/${series.prefix}-${String(index + 1).padStart(2, "0")}.jpg`,
+    alt: `${series.title} ${index + 1}`,
+  })),
+}));
+
 const lessBookPages = Array.from({ length: 50 }, (_, index) => ({
   src: `/projects/less-brandbook/pages/page-${String(index + 1).padStart(2, "0")}.jpg`,
   page: index + 1,
@@ -292,7 +316,7 @@ export default function Home() {
       </footer>
 
       {activeProject && (
-        <div className={`project-view ${activeProject.id === "01" ? "garment-view" : ""} ${activeProject.id === "02" ? "out-service-view" : ""} ${activeProject.id === "03" ? "rere-view" : ""} ${activeProject.id === "04" ? "pingu-view" : ""} ${activeProject.id === "05" ? "evan-view" : ""} ${activeProject.id === "06" ? "xiaoran-view" : ""} ${activeProject.id === "07" ? "croquis-view" : ""} ${activeProject.id === "08" ? "less-book-view" : ""} ${activeProject.id === "12" ? "fish-view" : ""}`} role="dialog" aria-modal="true" aria-label={activeProject.title}>
+        <div className={`project-view ${activeProject.id === "01" ? "garment-view" : ""} ${activeProject.id === "02" ? "out-service-view" : ""} ${activeProject.id === "03" ? "rere-view" : ""} ${activeProject.id === "04" ? "pingu-view" : ""} ${activeProject.id === "05" ? "evan-view" : ""} ${activeProject.id === "06" ? "xiaoran-view" : ""} ${activeProject.id === "07" ? "croquis-view" : ""} ${activeProject.id === "08" ? "less-book-view" : ""} ${activeProject.id === "10" ? "reuse-view" : ""} ${activeProject.id === "11" ? "giftbox-view" : ""} ${activeProject.id === "12" ? "fish-view" : ""}`} role="dialog" aria-modal="true" aria-label={activeProject.title}>
           <button className="close-view" onClick={() => setActiveProject(null)}>Close ×</button>
           <div className="view-heading">
             <span>Project {activeProject.id}</span>
@@ -317,6 +341,10 @@ export default function Home() {
                     ? "/projects/croquis-ss26/cover.jpg"
                   : activeProject.id === "08"
                     ? "/projects/less-brandbook/cover.jpg"
+                  : activeProject.id === "10"
+                    ? "/projects/10-jnby-reuse.jpg"
+                  : activeProject.id === "11"
+                    ? "/projects/11-giftbox.jpg"
                 : activeProject.image}
             alt={`${activeProject.title} 项目封面`}
           />
@@ -812,18 +840,18 @@ export default function Home() {
                 <span className="case-index">Ruby Campaign / Overview</span>
                 <div>
                   <h2>红宝石时光，<br />撑起肌肤韧性</h2>
-                  <p>围绕珀莱雅红宝石系列与品牌时光大使李小冉，建立由冷调浅蓝、红宝石光泽与银色产品质感构成的视觉系统，在人物状态、产品特写与动态影像之间保持统一。</p>
+                  <p>围绕珀莱雅红宝石系列与品牌时光大使李小冉，以 guideline 中的深红至亮红渐变为唯一背景系统，让红宝石光泽、银色产品质感与人物状态在影像中保持统一。</p>
                 </div>
                 <div className="case-en">
                   <h2>Ruby resilience,<br />captured in light.</h2>
-                  <p>A refined campaign where cool blue light, ruby-red product accents and luminous skin create one cohesive image system across film and photography.</p>
+                  <p>A refined campaign where a ruby-red gradient, metallic product details and luminous skin create one cohesive image system across film and photography.</p>
                 </div>
               </section>
 
               <section className="xiaoran-kv-section">
                 <div className="case-section-heading">
                   <span>01 / Artist Key Visuals</span>
-                  <p>以冷调浅蓝托起人物肤感，用高饱和红宝石产品形成视觉锚点，统一代言人、产品与品牌信息。</p>
+                  <p>以深红至亮红的渐变承托人物肤感，用银色产品与红宝石光泽形成视觉锚点，统一代言人、产品与品牌信息。</p>
                 </div>
                 <div className="xiaoran-kv-grid">
                   {xiaoranKeyVisuals.map((item, index) => (
@@ -1003,6 +1031,114 @@ export default function Home() {
                 <div>
                   <p>围绕 “LESS IS MORE” 梳理品牌理念、影像资产与产品信息，以现代建筑美学为灵感，建立克制、清晰且具有秩序感的品牌册叙事。</p>
                   <p className="case-en">Brand book visual direction, editorial structure, image sequencing and layout design.</p>
+                </div>
+              </section>
+            </article>
+          ) : activeProject.id === "10" ? (
+            <article className="case-study reuse-case">
+              <section className="case-intro dark-case-intro reuse-intro">
+                <span className="case-index">Documentary / Overview</span>
+                <div>
+                  <h2>布尽其用，<br />让手艺继续生长</h2>
+                  <p>项目从织物与人的真实关系出发，分别走近曲措与粟田梅。两段地域、技艺与生活经验不同的故事，共同回应材料如何被珍惜、延续，并在当下获得新的生命。</p>
+                </div>
+                <div className="case-en">
+                  <h2>Cloth in use.<br />Craft in motion.</h2>
+                  <p>Two documentary chapters trace how cloth, place and lived knowledge continue through the hands of Qucu and Su Tianmei.</p>
+                </div>
+              </section>
+
+              <section className="reuse-chapter reuse-qucu-section">
+                <div className="reuse-chapter-title">
+                  <span>01 / 曲措</span>
+                  <h2>曲措<br /><em>Qucu</em></h2>
+                  <p>在高原环境与日常劳作之间，织物承载着时间、经验和人与土地的关系。影像以克制的观察记录纤维从双手出发，再回到生活。</p>
+                </div>
+                <div className="reuse-film-wrap">
+                  <span className="film-cta">点击观看曲措篇 ↓︎</span>
+                  <video controls playsInline preload="none" poster="/projects/jnby-reuse/qucu/qucu-01.jpg">
+                    <source src="/projects/jnby-reuse/qucu-film.m4v" type="video/mp4" />
+                  </video>
+                </div>
+                <div className="reuse-editorial-grid">
+                  {reuseQucuImages.map((item, index) => (
+                    <figure key={item.src}>
+                      <img src={item.src} alt={item.alt} loading="lazy" />
+                      <figcaption>曲措 · {String(index + 1).padStart(2, "0")}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+
+              <section className="reuse-chapter reuse-suitianmei-section">
+                <div className="reuse-chapter-title">
+                  <span>02 / 粟田梅</span>
+                  <h2>粟田梅<br /><em>Su Tianmei</em></h2>
+                  <p>从蓝染、织造到共同劳作，材料不只是物件，也连接着女性经验与社区记忆。深蓝的线与明亮的日常共同构成这一章的影像语气。</p>
+                </div>
+                <div className="reuse-film-wrap">
+                  <span className="film-cta">点击观看粟田梅篇 ↓︎</span>
+                  <video controls playsInline preload="none" poster="/projects/jnby-reuse/suitianmei/suitianmei-01.jpg">
+                    <source src="/projects/jnby-reuse/suitianmei-film.m4v" type="video/mp4" />
+                  </video>
+                </div>
+                <div className="reuse-editorial-grid reuse-suitianmei-grid">
+                  {reuseSuitianmeiImages.map((item, index) => (
+                    <figure key={item.src}>
+                      <img src={item.src} alt={item.alt} loading="lazy" />
+                      <figcaption>粟田梅 · {String(index + 1).padStart(2, "0")}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+
+              <section className="case-role dark-case-role reuse-role">
+                <span>03 / Role</span>
+                <h2>Documentary Visual Direction<br />Content & Image Planning</h2>
+                <div>
+                  <p>围绕两位人物建立双章节叙事，参与内容梳理、影像方向与平面素材编排，让技艺、材料与真实生活在同一视觉系统中彼此照见。</p>
+                  <p className="case-en">Documentary visual direction, two-part narrative structure, image planning and editorial sequencing.</p>
+                </div>
+              </section>
+            </article>
+          ) : activeProject.id === "11" ? (
+            <article className="case-study giftbox-case">
+              <section className="case-intro dark-case-intro giftbox-intro">
+                <span className="case-index">Packaging / Overview</span>
+                <div>
+                  <h2>礼赠，不止于包装</h2>
+                  <p>围绕不同节日、产品线与使用场景，完成从概念、视觉、结构到材料与工艺落地的礼盒设计。每组作品保留独立气质，同时以清晰的产品秩序与开箱体验形成统一方法。</p>
+                </div>
+                <div className="case-en">
+                  <h2>Designed to give.<br />Made to be remembered.</h2>
+                  <p>A collection of gifting systems developed across concept, structure, material, print craft and production.</p>
+                </div>
+              </section>
+
+              {giftBoxSeries.map((series, seriesIndex) => (
+                <section className="giftbox-series" key={series.prefix}>
+                  <div className="giftbox-series-heading">
+                    <span>{String(seriesIndex + 1).padStart(2, "0")} / {series.title}</span>
+                    <h2>{series.title}</h2>
+                    <p>{series.english}</p>
+                  </div>
+                  <div className={`giftbox-grid giftbox-${series.prefix}`}>
+                    {series.images.map((item, imageIndex) => (
+                      <figure key={item.src}>
+                        <img src={item.src} alt={item.alt} loading="lazy" />
+                        <figcaption>{String(imageIndex + 1).padStart(2, "0")} / {String(series.images.length).padStart(2, "0")}</figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                </section>
+              ))}
+
+              <section className="case-role dark-case-role giftbox-role">
+                <span>06 / Role</span>
+                <h2>Packaging Design<br />Material & Production</h2>
+                <div>
+                  <p>负责品牌礼盒、包装与线下物料的创意设计及落地执行，涵盖概念提案、结构规划、材料选型、工艺组合、打样校色与生产文件整理。</p>
+                  <p className="case-en">Packaging concept, structural planning, material and print-craft selection, prototyping and production-ready artwork.</p>
                 </div>
               </section>
             </article>
