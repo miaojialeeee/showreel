@@ -7,10 +7,13 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: Aria
 button, a { color: inherit; }
 button { font: inherit; }
 
-.masthead { height: 20vh; min-height: 148px; padding: 22px 24px 18px; display: grid; grid-template-columns: 1.3fr 1.15fr .8fr auto; gap: 24px; align-items: start; border-bottom: 1px solid var(--line); font-size: 13px; line-height: 1.35; }
+.masthead { min-height: 188px; padding: 22px 24px 18px; display: grid; grid-template-columns: 1.25fr auto 1fr .72fr auto; gap: clamp(18px, 2vw, 32px); align-items: center; border-bottom: 1px solid var(--line); font-size: 13px; line-height: 1.35; }
 .identity { display: flex; gap: 18px; width: fit-content; color: inherit; text-decoration: none; font-size: clamp(28px, 3.7vw, 64px); line-height: .92; letter-spacing: -.055em; }
 .identity span:last-child { font-weight: 400; letter-spacing: -.08em; }
+.profile-portrait { width: clamp(76px, 6.8vw, 108px); aspect-ratio: 1; object-fit: cover; display: block; }
 .role { display: flex; flex-direction: column; }
+.role .education { margin-top: 14px; }
+.role .contact { color: #d9ff43; }
 .edition { text-transform: uppercase; }
 .about-link { justify-self: end; text-decoration: none; border-bottom: 1px solid currentColor; font-family: Arial, sans-serif; }
 
@@ -38,9 +41,12 @@ button { font: inherit; }
 .project-card:hover .project-meta, .project-card:focus-visible .project-meta, .project-card:hover .project-arrow, .project-card:focus-visible .project-arrow { opacity: 1; transform: translate(0); }
 .hero, .secondary, .medium, .small, .wide, .project { grid-column: auto; grid-row: auto; }
 .less { background: #f3f1ed; }
-.about-card { grid-column: 1 / -1; min-height: 280px; padding: 22px; background: #d9ff43; color: #111; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-content: space-between; font-size: clamp(18px, 2.2vw, 36px); line-height: 1.15; }
-.about-card p { margin: 0 0 12px; }
-.about-card span { grid-column: 1 / -1; margin-top: 70px; font-size: 11px; }
+.about-card { grid-column: 1 / -1; min-height: 520px; padding: clamp(24px, 4vw, 64px); background: #d9ff43; color: #111; display: grid; grid-template-columns: .78fr 1.22fr; gap: clamp(36px, 7vw, 120px); align-content: space-between; line-height: 1.3; }
+.about-heading span { font-size: 11px; letter-spacing: .05em; text-transform: uppercase; }
+.about-heading h2 { margin: clamp(36px, 8vh, 92px) 0 0; font-size: clamp(32px, 4.8vw, 78px); line-height: .96; letter-spacing: -.055em; font-weight: 500; }
+.about-copy { display: grid; gap: 24px; align-content: start; font-size: clamp(16px, 1.65vw, 27px); line-height: 1.42; }
+.about-copy p { margin: 0; }
+.about-card .about-location { grid-column: 1 / -1; margin-top: clamp(48px, 9vh, 110px); font-size: 11px; }
 
 .project-cursor { position: fixed; z-index: 50; left: 0; top: 0; width: 78px; height: 78px; margin: -39px 0 0 -39px; display: grid; place-items: center; border-radius: 50%; background: #d9ff43; color: #111; font-size: 11px; letter-spacing: .04em; text-transform: uppercase; pointer-events: none; opacity: 0; scale: .55; transition: opacity .18s ease, scale .3s cubic-bezier(.2,.8,.2,1); }
 .project-cursor.is-visible { opacity: 1; scale: 1; }
@@ -68,10 +74,12 @@ footer a { text-decoration: none; border-bottom: 1px solid; }
 .project-view.xiaoran-view { background: linear-gradient(135deg,#570000 0%,#a90219 58%,#c81f1a 100%); color: #fff; }
 .xiaoran-view .view-heading { border-bottom: 1px solid rgba(255,255,255,.22); }
 .project-view.croquis-view,
+.project-view.photography-view,
 .project-view.fish-view,
 .project-view.reuse-view,
 .project-view.giftbox-view { background: #050505; color: #f3f1eb; }
 .croquis-view .view-heading,
+.photography-view .view-heading,
 .fish-view .view-heading,
 .reuse-view .view-heading,
 .giftbox-view .view-heading { border-bottom: 1px solid rgba(255,255,255,.2); }
@@ -438,12 +446,34 @@ footer a { text-decoration: none; border-bottom: 1px solid; }
 .fish-editorial-section { background: #0a0a0a; }
 .fish-role { background: #050505; }
 
+.photography-case { background: #050505; color: #f3f1eb; }
+.photography-intro h2 { font-size: clamp(34px, 5.2vw, 86px); }
+.photography-journal-section { padding: clamp(72px, 13vh, 150px) 0 clamp(100px, 18vh, 210px); background: #050505; }
+.photography-journal-section .case-section-heading p { color: rgba(255,255,255,.55); }
+.photography-grid { padding: 0 var(--case-pad); display: grid; grid-template-columns: repeat(12,minmax(0,1fr)); gap: clamp(70px, 12vh, 140px) 12px; align-items: start; }
+.photography-grid figure { grid-column: span 6; margin: 0; }
+.photography-grid figure:nth-child(1),
+.photography-grid figure:nth-child(7),
+.photography-grid figure:nth-child(14) { grid-column: 1 / -1; }
+.photography-grid figure:nth-child(15) { grid-column: 2 / 7; }
+.photography-grid figure:nth-child(16) { grid-column: 8 / 12; margin-top: 12vh; }
+.photography-grid figure:nth-child(17) { grid-column: 1 / 9; }
+.photography-grid figure:nth-child(18) { grid-column: 9 / 13; margin-top: 10vh; }
+.photography-grid figure:nth-child(19) { grid-column: 2 / 6; }
+.photography-grid figure:nth-child(20) { grid-column: 7 / 13; margin-top: 8vh; }
+.photography-grid figure:nth-child(21) { grid-column: 3 / 11; }
+.photography-grid img { display: block; width: 100%; height: auto; }
+.photography-grid figcaption { padding-top: 10px; color: rgba(255,255,255,.42); font-size: 10px; letter-spacing: .04em; }
+.photography-role { background: #0a0a0a; }
+
 @media (max-width: 760px) {
-  .masthead { height: auto; min-height: 178px; grid-template-columns: 1fr auto; gap: 20px; }
-  .identity { font-size: 34px; flex-direction: column; gap: 0; }
-  .role { align-items: flex-end; text-align: right; }
-  .edition { align-self: end; }
-  .about-link { align-self: end; }
+  .masthead { min-height: 270px; grid-template-columns: 72px 1fr auto; gap: 16px; align-items: start; }
+  .identity { grid-column: 1 / 3; font-size: 34px; flex-direction: column; gap: 0; }
+  .profile-portrait { grid-column: 1; grid-row: 2 / span 2; width: 72px; }
+  .role { grid-column: 2 / 4; align-items: flex-start; text-align: left; }
+  .role .education { margin-top: 9px; }
+  .edition { grid-column: 2; align-self: end; }
+  .about-link { grid-column: 3; align-self: end; }
   .filters { min-height: 56px; padding: 0 16px; gap: 25px; }
   .filters button { padding: 18px 0 16px; font-size: 11px; }
   .project-grid { grid-template-columns: 1fr; }
@@ -451,8 +481,10 @@ footer a { text-decoration: none; border-bottom: 1px solid; }
   .project-meta, .project-arrow { opacity: 1; transform: none; }
   .project-card .shade { opacity: .55; }
   .project-cn { font-size: 17px; }
-  .about-card { grid-column: auto; min-height: 360px; grid-template-columns: 1fr; font-size: 21px; }
-  .about-card span { grid-column: auto; }
+  .about-card { grid-column: auto; min-height: 0; grid-template-columns: 1fr; gap: 52px; padding: 28px 22px 34px; }
+  .about-heading h2 { margin-top: 44px; font-size: 40px; }
+  .about-copy { font-size: 17px; line-height: 1.5; }
+  .about-card .about-location { grid-column: auto; margin-top: 26px; }
   footer { grid-template-columns: 1fr; min-height: 210px; }
   .view-heading { grid-template-columns: 1fr auto; padding: 70px 24px 38px; }
   .view-heading h1 { grid-column: 1 / -1; white-space: normal; }
@@ -469,6 +501,10 @@ footer a { text-decoration: none; border-bottom: 1px solid; }
   .service-kv-gallery, .case-gallery { padding-right: 20vw; }
   .service-kv-gallery figure, .case-gallery figure { flex-basis: 76vw; }
   .case-role { min-height: auto; padding-top: 80px; padding-bottom: 90px; grid-template-columns: 1fr; }
+  .photography-journal-section { padding-top: 72px; padding-bottom: 100px; }
+  .photography-grid { grid-template-columns: 1fr; gap: 54px; }
+  .photography-grid figure,
+  .photography-grid figure:nth-child(n) { grid-column: 1; margin-top: 0; }
   .out-kv-section, .out-people-section, .out-lookbook-section, .out-films-section, .out-wechat-section, .out-bts-section, .out-event-film { padding-top: 62px; padding-bottom: 80px; }
   .out-kv-single { width: 100%; }
   .out-people-gallery, .out-lookbook-gallery, .out-bts-gallery { padding-right: 20vw; }

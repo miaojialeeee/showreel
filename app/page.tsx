@@ -22,7 +22,7 @@ const projects: Project[] = [
   { id: "06", title: "珀莱雅 × 李小冉", english: "PROYA × Li Xiaoran", year: "2026", image: "/projects/05-proya-xiaoran.jpg", size: "small", focus: "center", category: "beauty" },
   { id: "07", title: "速写 26SS 大片", english: "CROQUIS SS26 Campaign", year: "2025", image: "/projects/croquis-ss26/cover.jpg", size: "small", focus: "center", category: "fashion" },
   { id: "08", title: "LESS 26SS 品牌册", english: "LESS SS26 Brand Book", year: "2026", image: "/projects/01-less.jpg", size: "small less", focus: "center", category: "fashion" },
-  { id: "09", title: "PROYA ×「孟子义」", english: "PROYA × Meng Ziyi", year: "2026", image: "/projects/09-proya-mengziyi.jpg", size: "project", focus: "center", category: "beauty" },
+  { id: "09", title: "摄影集", english: "Personal Photography", year: "—", image: "/projects/photography/cover.jpg", size: "project", focus: "center", category: "personal" },
   { id: "10", title: "江南布衣 ×「布尽其用」", english: "JNBY × Reuse", year: "2025", image: "/projects/10-jnby-reuse.jpg", size: "project", focus: "center", category: "fashion" },
   { id: "11", title: "礼盒合集", english: "Gift Box Collection", year: "2026", image: "/projects/11-giftbox.jpg", size: "project", focus: "center", category: "beauty" },
   { id: "12", title: "观鱼「About Fish」", english: "About Fish", year: "—", image: "/projects/12-about-fish.jpg", size: "project", focus: "center", category: "personal" },
@@ -225,6 +225,11 @@ const fishEditorialImages = Array.from({ length: 5 }, (_, index) => ({
   alt: `观鱼书籍设计 ${index + 1}`,
 }));
 
+const photographyImages = Array.from({ length: 21 }, (_, index) => ({
+  src: `/projects/photography/photo-${String(index + 1).padStart(2, "0")}.jpg`,
+  alt: `Samuel 缪嘉乐个人摄影 ${index + 1}`,
+}));
+
 export default function Home() {
   const [activeProject, setActiveProject] = useState<Project | null>(null);
   const [activeCategory, setActiveCategory] = useState<(typeof categories)[number]["id"]>("all");
@@ -253,9 +258,12 @@ export default function Home() {
           <span>Samuel</span>
           <span>缪嘉乐</span>
         </a>
+        <img className="profile-portrait" src="/profile/samuel.jpg" alt="Samuel 缪嘉乐个人照片" />
         <div className="role">
           <span>Brand Visual Designer</span>
           <span>品牌视觉设计师</span>
+          <span className="education">中国美术学院毕业</span>
+          <span className="contact">微信：Samuel_mmm</span>
         </div>
         <div className="edition">Selected Works<br />2025—2026</div>
         <a className="about-link" href="#about">About ↘︎</a>
@@ -303,9 +311,16 @@ export default function Home() {
         ))}
 
         <section className="about-card" id="about">
-          <p>Samuel 缪嘉乐是一位专注于时装、美妆与文化内容的品牌视觉设计师。</p>
-          <p>Samuel Miao is a brand visual designer working across fashion, beauty and culture.</p>
-          <span>Shanghai · China</span>
+          <div className="about-heading">
+            <span>About / Samuel Miao</span>
+            <h2>品牌视觉设计师<br />Brand Visual Designer</h2>
+          </div>
+          <div className="about-copy">
+            <p>中国美术学院本科毕业，拥有时尚与美妆品牌双重视觉工作经验。</p>
+            <p>具备从 Brief理解、创意概念、视觉方向建立到设计执行与线下落地的完整工作能力，能够在品牌视觉、Campaign、Social Content、商业拍摄、包装及AI影像等不同媒介之间进行视觉转化。</p>
+            <p>对品牌、时尚、美妆及当代视觉趋势保持较高敏感度，同时具备较强的视觉判断、审美把控与快速学习能力，能够在不同品牌语境下建立具有辨识度且可执行的视觉表达。</p>
+          </div>
+          <span className="about-location">Shanghai · China　/　微信：Samuel_mmm</span>
         </section>
       </section>
 
@@ -316,7 +331,7 @@ export default function Home() {
       </footer>
 
       {activeProject && (
-        <div className={`project-view ${activeProject.id === "01" ? "garment-view" : ""} ${activeProject.id === "02" ? "out-service-view" : ""} ${activeProject.id === "03" ? "rere-view" : ""} ${activeProject.id === "04" ? "pingu-view" : ""} ${activeProject.id === "05" ? "evan-view" : ""} ${activeProject.id === "06" ? "xiaoran-view" : ""} ${activeProject.id === "07" ? "croquis-view" : ""} ${activeProject.id === "08" ? "less-book-view" : ""} ${activeProject.id === "10" ? "reuse-view" : ""} ${activeProject.id === "11" ? "giftbox-view" : ""} ${activeProject.id === "12" ? "fish-view" : ""}`} role="dialog" aria-modal="true" aria-label={activeProject.title}>
+        <div className={`project-view ${activeProject.id === "01" ? "garment-view" : ""} ${activeProject.id === "02" ? "out-service-view" : ""} ${activeProject.id === "03" ? "rere-view" : ""} ${activeProject.id === "04" ? "pingu-view" : ""} ${activeProject.id === "05" ? "evan-view" : ""} ${activeProject.id === "06" ? "xiaoran-view" : ""} ${activeProject.id === "07" ? "croquis-view" : ""} ${activeProject.id === "08" ? "less-book-view" : ""} ${activeProject.id === "09" ? "photography-view" : ""} ${activeProject.id === "10" ? "reuse-view" : ""} ${activeProject.id === "11" ? "giftbox-view" : ""} ${activeProject.id === "12" ? "fish-view" : ""}`} role="dialog" aria-modal="true" aria-label={activeProject.title}>
           <button className="close-view" onClick={() => setActiveProject(null)}>Close ×</button>
           <div className="view-heading">
             <span>Project {activeProject.id}</span>
@@ -341,6 +356,8 @@ export default function Home() {
                     ? "/projects/croquis-ss26/cover.jpg"
                   : activeProject.id === "08"
                     ? "/projects/less-brandbook/cover.jpg"
+                  : activeProject.id === "09"
+                    ? "/projects/photography/cover.jpg"
                   : activeProject.id === "10"
                     ? "/projects/10-jnby-reuse.jpg"
                   : activeProject.id === "11"
@@ -1031,6 +1048,44 @@ export default function Home() {
                 <div>
                   <p>围绕 “LESS IS MORE” 梳理品牌理念、影像资产与产品信息，以现代建筑美学为灵感，建立克制、清晰且具有秩序感的品牌册叙事。</p>
                   <p className="case-en">Brand book visual direction, editorial structure, image sequencing and layout design.</p>
+                </div>
+              </section>
+            </article>
+          ) : activeProject.id === "09" ? (
+            <article className="case-study photography-case">
+              <section className="case-intro dark-case-intro photography-intro">
+                <span className="case-index">Personal Practice / Photography</span>
+                <div>
+                  <h2>在风景与人之间，<br />保存观看的片刻</h2>
+                  <p>一组从雪原、河流与旷野延伸至村落和日常生活的个人摄影。画面在远景与近距离观察之间切换，记录自然尺度，也保留人与环境相遇时细小而真实的瞬间。</p>
+                </div>
+                <div className="case-en">
+                  <h2>Between landscape<br />and everyday life.</h2>
+                  <p>A personal photographic journal moving from open landscapes to lived spaces, tracing quiet encounters between people, place and time.</p>
+                </div>
+              </section>
+
+              <section className="photography-journal-section">
+                <div className="case-section-heading">
+                  <span>01 / Photography Journal</span>
+                  <p>以松散的编辑节奏展开整组影像：先从辽阔景观进入，再靠近人物、动物与生活现场。</p>
+                </div>
+                <div className="photography-grid">
+                  {photographyImages.map((item, index) => (
+                    <figure key={item.src}>
+                      <img src={item.src} alt={item.alt} loading="lazy" />
+                      <figcaption>{String(index + 1).padStart(2, "0")} / {String(photographyImages.length).padStart(2, "0")}</figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </section>
+
+              <section className="case-role dark-case-role photography-role">
+                <span>02 / Personal Practice</span>
+                <h2>Observation<br />Framing & Photography</h2>
+                <div>
+                  <p>作为商业视觉工作之外持续进行的个人观察，摄影帮助我保持对空间、光线、人物关系与日常细节的感知。</p>
+                  <p className="case-en">An ongoing personal practice in observing light, distance, people and the quiet structure of everyday scenes.</p>
                 </div>
               </section>
             </article>
